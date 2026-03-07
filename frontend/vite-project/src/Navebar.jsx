@@ -10,6 +10,7 @@ const Navbar = () => {
         <li style={styles.item}>Tasks</li>
         <li style={styles.item}>Add Task</li>
         <li style={styles.item}>Completed</li>
+        <li style={styles.item}>Profile</li>
       </ul>
     </nav>
   );
