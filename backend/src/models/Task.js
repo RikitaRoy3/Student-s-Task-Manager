@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const TaskSchema = new mongoose.Schema({
-  TaskName: {
+  TaskTitle: {
     type: String,
     required: true,
     trim: true,
