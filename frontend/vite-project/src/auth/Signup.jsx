@@ -2,19 +2,18 @@ import React, { useState } from "react";
 import { Link } from "react-router";
 import { toast } from "react-toastify";
 
-function Register() {
-  let [firstName, setFirstName] = useState("");
-  let [lastName, setLastName] = useState("");
+function Signup() {
+  let [fullName, setFullName] = useState("");
+  // let [lastName, setLastName] = useState("");
   let [email, setEmail] = useState("");
   let [password, setPassword] = useState("");
 
   let pressedRegister = (event) => {
     event.preventDefault();
-    console.log("firstName:", firstName);
-    console.log("lastName:", lastName);
+    console.log("fullName:", fullName);
     console.log("email:", email);
     console.log("password:",  password);
-    if (!firstName || !lastName || !email || !password){
+    if (!fullName || !email || !password){
         return toast.error("all informations are required")
       }
   };
@@ -23,7 +22,7 @@ function Register() {
       <section className="border-red-500 bg-gray-200 min-h-screen flex items-center justify-center">
         <div className="bg-gray-100 p-5 flex  flex-row-reverse rounded-2xl shadow-lg max-w-3xl">
           <div className="md:w-1/2 px-5">
-            <h2 className="text-2xl font-bold text-[#002D74]">Register</h2>
+            <h2 className="text-2xl font-bold text-[#002D74]">Signup</h2>
             <p className="text-sm mt-4 text-[#002D74]">
               If you have an account, please login
             </p>
@@ -74,7 +73,7 @@ function Register() {
                       px-4 py-3 mt-6"
                 onClick={pressedRegister}
               >
-                Register
+                Signup
               </button>
             </form>
 
