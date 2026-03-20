@@ -107,4 +107,4 @@ function Signup() {
   );
 }
 
-export default Register;
+export default Signup;

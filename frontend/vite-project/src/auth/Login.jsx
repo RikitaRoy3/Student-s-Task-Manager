@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router'
-import Register from './Register';
+import Signup from './Signup';
 import { toast } from 'react-toastify';
 
 function Login() {
@@ -23,7 +23,7 @@ function Login() {
           <div className="md:w-1/2 px-5">
             <h2 className="text-2xl font-bold text-[#002D74]">Login</h2>
             <p className="text-sm mt-4 text-[#002D74]">
-              If you don't have an account, please register
+              If you don't have an account, please Signup
             </p>
             <form className="mt-6" action="#" method="POST">
               <div>
@@ -81,10 +81,10 @@ function Login() {
             <div className="text-sm flex justify-between items-center mt-3">
               <p>If you don't have an account...</p>
               <Link
-                to="/register"
+                to="/signup"
                 className="py-2 px-5 ml-3 bg-white border rounded-xl hover:scale-110 duration-300 border-blue-400  "
               >
-                Register
+                Signup
               </Link>
             </div>
           </div>

@@ -7,7 +7,7 @@ import Calender from './pages/Calender.jsx'
 import Add from './pages/Add.jsx'
 import Home from './pages/Home.jsx'
 import Login from './auth/Login.jsx'
-import Register from './auth/Register'
+import Signup from './auth/Signup.jsx'
 
 
 function App() {
@@ -17,7 +17,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/login" element={<Login />}></Route>
-        <Route path="/register" element={<Register/>}></Route>
+        <Route path="/signup" element={<Signup />}></Route>
         <Route path="/dashboard" element={<Dashboard />}></Route>
         <Route path="/calender" element={<Calender />}></Route>
         <Route path="/add" element={<Add/>}></Route>
