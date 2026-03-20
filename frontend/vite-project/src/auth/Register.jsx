@@ -29,7 +29,7 @@ function Register() {
             </p>
             <form className="mt-6" action="#" method="POST">
               <div>
-                <label className="block text-gray-700">First Name</label>
+                <label className="block text-gray-700">Full Name</label>
                 <input
                   type="text"
                   name=""
@@ -41,18 +41,6 @@ function Register() {
                 />
               </div>
 
-              <div>
-                <label className="block text-gray-700">Last Name</label>
-                <input
-                  type="text"
-                  name=""
-                  id=""
-                  placeholder="Enter Your Last Name"
-                  className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none"
-                  required
-                  onChange={(e) => setLastName(e.target.value)}
-                />
-              </div>
               <div>
                 <label className="block text-gray-700">Email Address</label>
                 <input
