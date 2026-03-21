@@ -16,13 +16,6 @@ function Signup() {
     console.log("email:", email);
     console.log("password:", password);
 
-    if (!fullName || !email || !password) {
-      return toast.error("all informations are required")
-    }
-    if (password.length < 6) {
-      return toast.error("password must be at least 6 characters long")
-    }
-
     const res = await fetch("http://localhost:3000/api/auth/signup", {
       method: "POST",
       headers: {
@@ -39,6 +32,7 @@ function Signup() {
   };
 
 
+  
 
 
 return (
