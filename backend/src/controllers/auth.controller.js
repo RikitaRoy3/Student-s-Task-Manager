@@ -44,6 +44,7 @@ export const signup = async (req, res) => {
 
     res.status(201).json({
       user: {
+        message: "User registered successfully",
         _id: newUser._id,
         fullName: newUser.fullName,
         email: newUser.email,
