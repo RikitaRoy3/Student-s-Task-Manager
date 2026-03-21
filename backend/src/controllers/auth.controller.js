@@ -52,11 +52,11 @@ export const signup = async (req, res) => {
       },
     });
 
-    // try {
-    //   await sendWelcomeEmail(newUser.email, newUser.fullName, ENV.CLIENT_URL);
-    // } catch (err) {
-    //   console.error("Welcome email failed:", err);
-    // }
+    try {
+      await sendWelcomeEmail(newUser.email, newUser.fullName, ENV.CLIENT_URL);
+    } catch (err) {
+      console.error("Welcome email failed:", err);
+    }
   } catch (error) {
     console.error("Error in signup controller:", error);
     res.status(500).json({ message: "Internal server error" });
