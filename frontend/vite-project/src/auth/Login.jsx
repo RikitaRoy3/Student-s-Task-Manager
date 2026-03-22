@@ -7,10 +7,18 @@ function Login() {
  let [email,setEmail] = useState("")
  let [password,setPassword] = useState("")
 
- let pressedLogin=(event)=>{
+ let pressedLogin=async (event)=>{
   event.preventDefault();
   console.log("email:",email);
   console.log("password:",password);
+  const res = await fetch("http://localhost:3000/api/auth/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+      body: JSON.stringify({ email, password }),
+    });
   
  }
 
