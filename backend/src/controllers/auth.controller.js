@@ -74,6 +74,12 @@ export const login = async (req, res) => {
       return res.status(400).json({ message: "Please provide all the required fields" });
     }
 
+    const user = await User.findOne({ email });
+    if (!user) return res.status(400).json({ message: "Invalid email" });
+
+    
+    generateToken(user._id, res);
+
     res.status(200).json({
       user: {
         _id: user._id,
