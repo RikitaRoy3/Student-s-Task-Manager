@@ -9,7 +9,7 @@ import { ENV } from "./lib/env.js";
 // import { app, server } from "./lib/socket.js";
 
 import authRoutes from "./routes/auth.route.js";
-// import messageRoutes from "./routes/message.route.js";
+import taskRoutes from "./routes/task.route.js";
 
 dotenv.config();
 
@@ -27,7 +27,7 @@ app.use(cookieParser());
 const PORT=process.env.PORT || 3000;
 
 app.use("/api/auth", authRoutes);
-// app.use("/api/messages", messageRoutes);
+app.use("/api/task", taskRoutes);
 
 
 if (ENV.NODE_ENV === "production") {

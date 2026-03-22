@@ -1,3 +1,4 @@
+import Task from "../models/Task.js";
 import User from "../models/User.js";
 import { ENV } from "../lib/env.js";
 
@@ -7,13 +8,15 @@ dotenv.config();
 export const new_task = async (req, res) => {
   const { TaskTitle, Description, Priority, DueDate } = req.body;
 
+
   try {
+    const { userId } = req.params;
 
     if (!TaskTitle || !Description || !Priority || !DueDate) {
       return res.status(400).json({ message: "Please provide all the required fields" });
     }
-    
-    const existingUser = await User.findOne({ email });
+
+    const existingUser = await User.findOne({ _id: userId });
     if (!existingUser) {
       return res.status(404).json({ message: "User not found" });
     }
