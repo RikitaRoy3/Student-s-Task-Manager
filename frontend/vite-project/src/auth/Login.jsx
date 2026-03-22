@@ -11,9 +11,7 @@ function Login() {
   event.preventDefault();
   console.log("email:",email);
   console.log("password:",password);
-  if (!email || !password){
-    return toast.error("email and password are required")
-  }
+  
  }
 
   return (
