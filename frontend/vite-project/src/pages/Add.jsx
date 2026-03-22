@@ -5,10 +5,10 @@ import { toast } from "react-toastify";
 
 function Add() {
 
-    let [TaskTitle, setTaskTitle] = useState("");
-    let [Description, setDescription] = useState("");
-    let [Priority, setPriority] = useState("");
-    let [DueDate, setDueDate] = useState("");
+  let [TaskTitle, setTaskTitle] = useState("");
+  let [Description, setDescription] = useState("");
+  let [Priority, setPriority] = useState("");
+  let [DueDate, setDueDate] = useState("");
 
 
   /* ===================== connecting Add Task's Backend ===================== */
@@ -36,7 +36,7 @@ function Add() {
   };
 
 
-  
+
 
 
 
@@ -51,7 +51,7 @@ function Add() {
           <label className="font-bold text-lg block mb-2">TaskTitle*</label>
           <input
             type="text"
-            placeholder="Enter title"
+            placeholder="Enter Task Title"
             className="border-2 border-gray-400 p-2 w-full rounded focus:outline-none"
             required onChange={(e) => setTaskTitle(e.target.value)}
           />
@@ -61,6 +61,7 @@ function Add() {
           <textarea
             className="w-full p-2 border-2 border-gray-400 rounded focus:outline-none"
             rows={3}
+            placeholder="Enter Task Description"
             required
             onChange={(e) => setDescription(e.target.value)}
           />
@@ -75,14 +76,17 @@ function Add() {
         </div>
         <div className="mt-3">
           <label className="font-bold text-lg block mb-2">Priority*</label>
-          <select className="border-2 border-gray-400 p-2 w-50 rounded focus:outline-none" onChange={(e) => setPriority(e.target.value)}>
+          <select className="border-2 border-gray-400 p-2 w-50 rounded focus:outline-none" value={Priority} onChange={(e) => setPriority(e.target.value)}>
+            <option value="" disabled>
+              Select Priority
+            </option>
             <option value={"High"}>High</option>
             <option value={"Low"}>Low</option>
             <option value={"Medium"}>Medium</option>
           </select>
         </div>
         <hr className="bg-gray-900 h-[2px] mt-8" />
-        <button  type="submit" className="mt-5 bg-blue-900 text-white font-bold px-10 py-3 flex rounded hover:bg-blue-700"  onClick={pressedRegister}>
+        <button type="submit" className="mt-5 bg-blue-900 text-white font-bold px-10 py-3 flex rounded hover:bg-blue-700" onClick={pressedRegister}>
           Save Task
         </button>
       </form>
