@@ -8,6 +8,10 @@ import {  sendWelcomeEmail} from "../emails/emailHandlers.js";
 import dotenv from "dotenv";
 dotenv.config();
 
+
+
+
+
 /* ===================== SIGNUP ===================== */
 export const signup = async (req, res) => {
   const { fullName, email, password } = req.body;
@@ -63,6 +67,13 @@ export const signup = async (req, res) => {
     res.status(500).json({ message: "Internal server error" });
   }
 };
+
+
+
+
+
+
+
 
 
 /* ===================== LOGIN ===================== */
