@@ -10,7 +10,7 @@ export const new_task = async (req, res) => {
 
 
   try {
-    const { userId } = req.params;
+    const  userId  = req.params.userId;
 
     if (!TaskTitle || !Description || !Priority || !DueDate) {
       return res.status(400).json({ message: "Please provide all the required fields" });
@@ -25,7 +25,8 @@ export const new_task = async (req, res) => {
       TaskTitle,
       Description,
       Priority,
-      DueDate
+      DueDate,
+      user: userId
     });
 
     res.status(201).json({
@@ -36,6 +37,7 @@ export const new_task = async (req, res) => {
         Description: new_task.Description,
         Priority: new_task.Priority,
         DueDate: new_task.DueDate,
+        user: new_task.user
       },
     });
     
