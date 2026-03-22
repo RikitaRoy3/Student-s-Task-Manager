@@ -19,6 +19,12 @@ function Login() {
       credentials: "include",
       body: JSON.stringify({ email, password }),
     });
+
+       const data = await res.json();
+    
+        res.ok
+          ? toast.success("Login successful")
+          : toast.error(data.message);
   
  }
 
