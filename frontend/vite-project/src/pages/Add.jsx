@@ -77,9 +77,7 @@ function Add() {
         <div className="mt-3">
           <label className="font-bold text-lg block mb-2">Priority*</label>
           <select className="border-2 border-gray-400 p-2 w-50 rounded focus:outline-none" value={Priority} onChange={(e) => setPriority(e.target.value)}>
-            <option value="" disabled>
-              Select Priority
-            </option>
+            <option value="" disabled>Select Priority</option>
             <option value={"High"}>High</option>
             <option value={"Low"}>Low</option>
             <option value={"Medium"}>Medium</option>
