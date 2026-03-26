@@ -36,11 +36,11 @@ import React from "react";
 import { Routes, Route } from "react-router";
 import Navbar from "./Component/Navebar.jsx";
 import Dashboard from "./pages/Dashboard.jsx";
-import Add from "./Pages/Add.jsx";
+import Add from "./pages/Add.jsx";
 import Profile from "./auth/Profile.jsx";
 import Login from "./auth/Login.jsx";
 import Signup from "./auth/Signup.jsx";
-import Taskslist from "./Pages/Taskslist.jsx";
+import Taskslist from "./pages/Taskslist.jsx";
 
 function App() {
   return (
@@ -49,7 +49,7 @@ function App() {
       <Routes>
         <Route path="/tasks-list" element={<Taskslist />}></Route>
         <Route path="/login" element={<Login />}></Route>
-        <Route path="/Signup" element={<signup />}></Route>
+        <Route path="/Signup" element={<Signup />}></Route>
         <Route path="/profile" element={<Profile />}></Route>
         <Route path="/dashboard" element={<Dashboard />}></Route>
         <Route path="/add" element={<Add />}></Route>
