@@ -1,11 +1,106 @@
-import React from 'react'
+import React from "react";
+import { Link } from "react-router";
 
-const TaskList = () => {
+const Taskslist = () => {
+  const tasks = [
+    // {
+    //   name: "Read Chapter 4",
+    //   date: "03-Jul-2024",
+    //   priority: "High",
+    //   status: "Pending",
+    // },
+    // {
+    //   name: "Biology Assignment",
+    //   date: "01-Jul-2024",
+    //   priority: "Low",
+    //   status: "Pending",
+    // },
+    // {
+    //   name: "Essay writing",
+    //   date: "20-Jul-2024",
+    //   priority: "Medium",
+    //   status: "Pending",
+    // },
+    // {
+    //   name: "History revision",
+    //   date: "01-Jul-2024",
+    //   priority: "High",
+    //   status: "Pending",
+    // },
+  ];
+
   return (
-    <div>
-      TaskList
-    </div>
-  )
-}
+    <div className="p-8">
+      <div className="mb-6">
+        <h1 className="text-3xl font-bold text-gray-900 mb-2">Task List</h1>
+        <p className="text-gray-500">Manage your tasks and deadlines</p>
+      </div>
 
-export default TaskList
+      <table className="w-full text-left bg-white rounded-lg overflow-hidden border shadow-sm">
+        <thead className="bg-gray-50">
+          <tr>
+            <th className="p-4 font-semibold text-gray-700">Task</th>
+            <th className="p-4 font-semibold text-gray-700">Due Date</th>
+            <th className="p-4 font-semibold text-gray-700">Priority</th>
+            <th className="p-4 font-semibold text-gray-700">Status</th>
+            <th className="p-4 font-semibold text-gray-700">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {tasks.map((task, index) => (
+            <tr key={index} className="border-t hover:bg-gray-50 transition">
+              <td className="p-4 font-medium text-gray-900">{task.name}</td>
+              <td className="p-4 text-gray-600">{task.date}</td>
+              <td className="p-4">
+                <span
+                  className={`px-3 py-1 rounded-full text-xs font-bold ${
+                    task.priority === "High"
+                      ? "bg-red-100 text-red-700"
+                      : task.priority === "Medium"
+                        ? "bg-yellow-100 text-yellow-700"
+                        : "bg-green-100 text-green-700"
+                  }`}
+                >
+                  {task.priority}
+                </span>
+              </td>
+              <td className="p-4">
+                <span className="px-3 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-700">
+                  {task.status}
+                </span>
+              </td>
+              <td className="p-4">
+                <div className="flex space-x-2">
+                  <button className="text-blue-600 hover:text-blue-800 font-medium text-sm p-1 rounded hover:bg-blue-50 transition">
+                    Edit
+                  </button>
+                  <button className="text-green-600 hover:text-green-800 font-medium text-sm p-1 rounded hover:bg-green-50 transition">
+                    Complete
+                  </button>
+                </div>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+
+      {tasks.length === 0 && (
+        <div className="text-center py-12">
+          <div className="text-gray-400 text-6xl mb-4">📝</div>
+          <h3 className="text-xl font-semibold text-gray-900 mb-2">
+            No tasks yet
+          </h3>
+          <p className="text-gray-500 mb-6">
+            Get started by adding your first task
+          </p>
+
+          <button className="bg-blue-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-blue-700 transition">
+            <Link to="/add">Add Task</Link>
+          </button>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default Taskslist;
