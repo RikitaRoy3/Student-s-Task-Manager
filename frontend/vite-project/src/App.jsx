@@ -1,30 +1,61 @@
-import React from 'react'
-import {Routes, Route} from 'react-router'
-import Navbar from './Component/Navebar.jsx'
-import Footer from './Component/Footer.jsx'
-import Dashboard from './pages/Dashboard.jsx'
-import Calender from './pages/Calender.jsx'
-import Add from './pages/Add.jsx'
-import Home from './pages/Home.jsx'
-import Login from './auth/Login.jsx'
-import Signup from './auth/Signup.jsx'
+// import React from 'react'
+// import {Routes, Route} from 'react-router'
+// import Navbar from './Component/Navebar.jsx'
+// import Footer from './Component/Footer.jsx'
+// import Dashboard from './pages/Dashboard.jsx'
+// import Calender from './pages/Calender.jsx'
+// import Add from './pages/Add.jsx'
+// import Home from './pages/Home.jsx'
+// import Login from './auth/Login.jsx'
+// import Signup from './auth/Signup.jsx'
 
+
+// function App() {
+//   return (
+//     <div>
+//       <Navbar/>
+//       <Routes>
+//         <Route path="/" element={<Home />}></Route>
+//         <Route path="/login" element={<Login />}></Route>
+//         <Route path="/signup" element={<Signup />}></Route>
+//         <Route path="/dashboard" element={<Dashboard />}></Route>
+//         <Route path="/calender" element={<Calender />}></Route>
+//         <Route path="/add" element={<Add/>}></Route>
+//       </Routes>
+//       <Footer/>
+//     </div>
+//   );
+// }
+
+// export default App
+
+
+
+
+import React from "react";
+import { Routes, Route } from "react-router";
+import Navbar from "./Component/Navebar.jsx";
+import Dashboard from "./pages/Dashboard.jsx";
+import Add from "./Pages/Add.jsx";
+import Profile from "./auth/Profile.jsx";
+import Login from "./auth/Login.jsx";
+import Signup from "./auth/Signup.jsx";
+import Taskslist from "./Pages/Taskslist.jsx";
 
 function App() {
   return (
     <div>
-      <Navbar/>
+      <Navbar />
       <Routes>
-        <Route path="/" element={<Home />}></Route>
+        <Route path="/tasks-list" element={<Taskslist />}></Route>
         <Route path="/login" element={<Login />}></Route>
-        <Route path="/signup" element={<Signup />}></Route>
+        <Route path="/Signup" element={<signup />}></Route>
+        <Route path="/profile" element={<Profile />}></Route>
         <Route path="/dashboard" element={<Dashboard />}></Route>
-        <Route path="/calender" element={<Calender />}></Route>
-        <Route path="/add" element={<Add/>}></Route>
+        <Route path="/add" element={<Add />}></Route>
       </Routes>
-      <Footer/>
     </div>
   );
 }
 
-export default App
+export default App;
