@@ -98,3 +98,24 @@ export const login = async (req, res) => {
     res.status(500).json({ message: "Internal server error" });
   }
 };
+
+/* ===================== Dashboard ===================== */
+
+export const dashboard = async (req, res) => {
+  try {
+    const user = await User.findById(req.user._id);
+    res.status(200).json({
+      user: {
+        _id: user._id,
+        fullName: user.fullName,
+        email: user.email,
+        profilePic: user.profilePic,
+        completedTasks: user.completedTasks,
+        pendingTasks: user.pendingTasks
+      },
+    });
+  } catch (error) {
+    console.error("Error in dashboard controller:", error);
+    res.status(500).json({ message: "Internal server error" });
+  } 
+};
