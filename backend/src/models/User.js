@@ -17,6 +17,14 @@ const UserSchema = new mongoose.Schema({
     required: true,
     trim: true,
   },
+  completedTasks: {
+    type: Array,
+    default:[]
+  },
+  pendingTasks: {
+    type: Array,
+    default:[]
+  },
   profilePic: {
     type: String,
     default: "",
