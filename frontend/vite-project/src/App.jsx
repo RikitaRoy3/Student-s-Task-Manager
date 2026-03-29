@@ -47,8 +47,9 @@ function App() {
   return (
     <div>
       <Navbar />
-      <Home/>
+      {/* <Home/> */}
       <Routes>
+        <Route path="/" element={<Home />}></Route>
         <Route path="/dashboard" element={<Dashboard />}></Route>
         <Route path="/tasks-list" element={<Taskslist />}></Route>
         <Route path="/login" element={<Login />}></Route>
