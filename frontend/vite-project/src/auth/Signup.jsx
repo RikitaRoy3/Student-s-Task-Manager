@@ -4,7 +4,6 @@ import { toast } from "react-toastify";
 
 function Signup() {
   let [fullName, setFullName] = useState("");
-  // let [lastName, setLastName] = useState("");
   let [email, setEmail] = useState("");
   let [password, setPassword] = useState("");
 

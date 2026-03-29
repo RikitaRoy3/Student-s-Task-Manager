@@ -42,23 +42,73 @@
 
 
 
-import React from "react";
+// import { set } from "mongoose";
 import { Link } from "react-router";
+import React, { useState, useEffect,useRef } from "react";
+import { toast } from "react-toastify";
 
 function Dashboard() {
+
+
+
+const hasFetched = useRef(false);
+
+useEffect(() => {
+  if (!hasFetched.current) {
+    pressedRegister();
+    hasFetched.current = true;
+  }
+}, []);// This ensures that pressedRegister is called only once when the component mounts (In case of multiple renders due to state changes, it won't call pressedRegister again).On top of that we were using strictmode which calls useEffect 2 time...one when component mounts , 2nd the component unmounts,then when component again mounts it calls useEffect again...so to avoid that we used useRef to track if we have already fetched the data or not.
+
+  let [fullName, setFullName] = useState("");
+  let [email, setEmail] = useState("");
+  let [profilePic, setProfilePic] = useState("");
+  let [completedTasks, setCompletedTasks] = useState([]);
+  let [pendingTasks, setPendingTasks] = useState([]);
+
+
+
   const status = {
-    total: 12,
-    completed: 5,
-    pending: 7,
+    total: completedTasks.length + pendingTasks.length,
+    completed: completedTasks.length,
+    pending: pendingTasks.length,
   };
   const upcomingTasks = [
     { id: 1, title: "Math Homework", status: "Tomorrow" },
     { id: 2, title: "Science Project", status: "Friday" },
     { id: 3, title: "History Essay", status: "Next Week" },
   ];
+
+  /* ===================== connecting Backend's SIGNUP ===================== */
+  let pressedRegister = async (event) => {
+
+    const res = await fetch("http://localhost:3000/api/auth/dashboard", {
+      method: "GET",
+      credentials: "include",
+    });
+
+    const data = await res.json();
+
+    res.ok
+      ? toast.success("successful !! ")
+      : toast.error(data.message);
+
+      setFullName(data.user.fullName);
+      setEmail(data.user.email);
+      setProfilePic(data.user.profilePic);
+      setCompletedTasks(data.user.completedTasks);
+      setPendingTasks(data.user.pendingTasks);
+
+    console.log("fullName:", data.user.fullName);
+    console.log("email:", data.user.email);
+    console.log("profilePic:", data.user.profilePic);
+    console.log("completedTasks:", data.user.completedTasks);
+    console.log("pendingTasks:", data.user.pendingTasks);
+  };
+
   return (
     <div className="p-8 min-h-screen">
-      <h1 className="text-3xl font-bold text-indigo-900 mb-6">Welcome!</h1>
+      <h1 className="text-3xl font-bold text-indigo-900 mb-6">Welcome {fullName}!</h1>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
         <div className="bg-blue-600 text-white p-6 rounded-xl shadow-md">
           <p className="text-2xl font-bold">Total Tasks</p>
@@ -79,15 +129,15 @@ function Dashboard() {
             Upcoming Tasks
           </h2>
           <div className="space-y-3">
-            
-              <div
-                
-                className=""
-              >
-                <span className=""></span>
-                <span className=""></span>
-              </div>
-            
+
+            <div
+
+              className=""
+            >
+              <span className=""></span>
+              <span className=""></span>
+            </div>
+
           </div>
         </div>
         <div className="p-6 rounded-2xl border border-gray-200 shadow-md">
