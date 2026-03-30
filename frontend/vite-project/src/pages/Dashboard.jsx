@@ -42,14 +42,13 @@
 
 
 
-// import { set } from "mongoose";
+import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router";
-import React, { useState, useEffect,useRef } from "react";
 import { toast } from "react-toastify";
 
 function Dashboard() {
 
-
+  /* ===================== connecting Backend's DASHBOARD ===================== */
 
 const hasFetched = useRef(false);
 
@@ -105,6 +104,8 @@ useEffect(() => {
     console.log("completedTasks:", data.user.completedTasks);
     console.log("pendingTasks:", data.user.pendingTasks);
   };
+
+  
 
   return (
     <div className="p-8 min-h-screen">
