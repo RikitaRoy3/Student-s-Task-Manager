@@ -24,6 +24,11 @@ export const new_task = async (req, res) => {
       user: req.user._id
     });
 
+    await User.findByIdAndUpdate(
+      req.user._id,
+      { $push: { pendingTasks: new_task._id } }
+    );
+
     res.status(201).json({
       user: {
         message: "New Task registered successfully",
