@@ -68,9 +68,9 @@ useEffect(() => {
 
 
   const status = {
-    total: completedTasks.length + pendingTasks.length,
-    completed: completedTasks.length,
-    pending: pendingTasks.length,
+    total: 0,
+    completed: 0,
+    pending: 0,
   };
   const upcomingTasks = [
     { id: 1, title: "Math Homework", status: "Tomorrow" },
