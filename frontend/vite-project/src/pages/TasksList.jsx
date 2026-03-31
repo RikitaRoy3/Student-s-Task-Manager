@@ -1,7 +1,57 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router";
+import { toast } from "react-toastify";
 
 const Taskslist = () => {
+
+
+  let [id, setid] = useState("");
+  let [fullName, setFullName] = useState("");
+  let [email, setEmail] = useState("");
+  let [profilePic, setProfilePic] = useState("");
+  let [completedTasks, setCompletedTasks] = useState([]);
+  let [pendingTasks, setPendingTasks] = useState([]);
+
+
+  /* ===================== connecting Backend's SIGNUP ===================== */
+  
+  
+  
+  
+  let pressedRegister = async (event) => {
+    event.preventDefault();
+
+    const res = await fetch("http://localhost:3000/api/auth/tasklist", {
+      method: "GET",
+      credentials: "include",
+    });
+
+    const data = await res.json();
+
+    res.ok
+      ? toast.success("Successful !!")
+      : toast.error(data.message);
+
+    setid(data.user.id);
+    setFullName(data.user.fullName);
+    setEmail(data.user.email);
+    setProfilePic(data.user.profilePic);
+    setCompletedTasks(data.user.completedTasks);
+    setPendingTasks(data.user.pendingTasks);
+
+    console.log("id:", data.user.id);
+    console.log("fullName:", data.user.fullName);
+    console.log("email:", data.user.email);
+    console.log("profilePic:", data.user.profilePic);
+    console.log("completedTasks:", data.user.completedTasks);
+    console.log("pendingTasks:", data.user.pendingTasks);
+
+  };
+
+
+
+
+
   const tasks = [
     // {
     //   name: "Read Chapter 4",
@@ -53,13 +103,12 @@ const Taskslist = () => {
               <td className="p-4 text-gray-600">{task.date}</td>
               <td className="p-4">
                 <span
-                  className={`px-3 py-1 rounded-full text-xs font-bold ${
-                    task.priority === "High"
+                  className={`px-3 py-1 rounded-full text-xs font-bold ${task.priority === "High"
                       ? "bg-red-100 text-red-700"
                       : task.priority === "Medium"
                         ? "bg-yellow-100 text-yellow-700"
                         : "bg-green-100 text-green-700"
-                  }`}
+                    }`}
                 >
                   {task.priority}
                 </span>

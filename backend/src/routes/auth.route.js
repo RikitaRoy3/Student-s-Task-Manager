@@ -12,7 +12,7 @@ const router = express.Router();
 router.post("/signup", signup);
 router.post("/login", login);
 router.get("/dashboard", checkauth, dashboard);
-router.get("/task-list", checkauth, taskList);
+router.get("/tasklist", checkauth, taskList);
 
 
 export default router;
