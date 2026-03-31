@@ -42,22 +42,21 @@ const Taskslist = () => {
       ? toast.success("Successful !!")
       : toast.error(data.message);
 
-    setid(data.user.id);
+    setid(data.user._id);
     setFullName(data.user.fullName);
     setEmail(data.user.email);
     setProfilePic(data.user.profilePic);
     setCompletedTasks(data.user.completedTasks);
     setPendingTasks(data.user.pendingTasks);
 
-    console.log("id:", data.user.id);
+    console.log("id:", data.user._id);
     console.log("fullName:", data.user.fullName);
-    console.log("email:", data.user.email);
+    console.log("email:", data.user.email); 
     console.log("profilePic:", data.user.profilePic);
     console.log("completedTasks:", data.user.completedTasks);
     console.log("pendingTasks:", data.user.pendingTasks);
-
+    
   };
-
 
 
 
