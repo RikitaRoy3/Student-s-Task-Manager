@@ -103,7 +103,9 @@ export const login = async (req, res) => {
 
 export const dashboard = async (req, res) => {
   try {
-    const user = await User.findById(req.user._id);
+    const user = await User.findById(req.user._id)
+      .populate("pendingTasks")
+      .populate("completedTasks");
     res.status(200).json({
       user: {
         _id: user._id,
@@ -126,7 +128,7 @@ export const dashboard = async (req, res) => {
 export const taskList = async (req, res) => {
   try {
     // const user = await User.findById(req.user._id);
-    
+
     const user = await User.findById(req.user._id)
       .populate("pendingTasks")
       .populate("completedTasks");
