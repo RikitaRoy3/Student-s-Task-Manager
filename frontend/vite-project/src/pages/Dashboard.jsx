@@ -88,15 +88,15 @@ useEffect(() => {
 
     const data = await res.json();
 
-    res.ok
-      ? toast.success("successful !! ")
-      : toast.error(data.message);
+    // res.ok
+    //   ? toast.success("successful !! ")
+    //   : toast.error(data.message);
 
       setFullName(data.user.fullName);
       setEmail(data.user.email);
       setProfilePic(data.user.profilePic);
-      // setCompletedTasks(data.user.completedTasks);
-    //   setPendingTasks(data.user.pendingTasks);
+      setCompletedTasks(data.user.completedTasks);
+      setPendingTasks(data.user.pendingTasks);
 
     console.log("fullName:", data.user.fullName);
     console.log("email:", data.user.email);
