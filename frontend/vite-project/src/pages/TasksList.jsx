@@ -5,6 +5,16 @@ import { toast } from "react-toastify";
 const Taskslist = () => {
 
 
+  
+  const hasFetched = useRef(false);
+  
+  useEffect(() => {
+    if (!hasFetched.current) {
+      pressedRegister();
+      hasFetched.current = true;
+    }
+  }, []);
+
   let [id, setid] = useState("");
   let [fullName, setFullName] = useState("");
   let [email, setEmail] = useState("");
@@ -19,7 +29,7 @@ const Taskslist = () => {
   
   
   let pressedRegister = async (event) => {
-    event.preventDefault();
+    // event.preventDefault();
 
     const res = await fetch("http://localhost:3000/api/auth/tasklist", {
       method: "GET",
