@@ -18,12 +18,12 @@ const UserSchema = new mongoose.Schema({
     trim: true,
   },
   completedTasks: {
-    type: Array,
-    default: []
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Task"
   },
   pendingTasks: {
-    type: Array,
-    default: []
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Task"
   },
   profilePic: {
     type: String,
