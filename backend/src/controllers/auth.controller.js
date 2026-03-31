@@ -2,7 +2,7 @@ import User from "../models/User.js";
 import bcrypt from "bcryptjs";
 import { ENV } from "../lib/env.js";
 import { generateToken } from "../lib/generatetoken.js";
-import {  sendWelcomeEmail} from "../emails/emailHandlers.js";
+import { sendWelcomeEmail } from "../emails/emailHandlers.js";
 
 
 import dotenv from "dotenv";
@@ -117,7 +117,7 @@ export const dashboard = async (req, res) => {
   } catch (error) {
     console.error("Error in dashboard controller:", error);
     res.status(500).json({ message: "Internal server error" });
-  } 
+  }
 };
 
 
@@ -125,7 +125,11 @@ export const dashboard = async (req, res) => {
 
 export const taskList = async (req, res) => {
   try {
-    const user = await User.findById(req.user._id);
+    // const user = await User.findById(req.user._id);
+    
+    const user = await User.findById(req.user._id)
+      .populate("pendingTasks")
+      .populate("completedTasks");
     res.status(200).json({
       user: {
         _id: user._id,
@@ -139,5 +143,5 @@ export const taskList = async (req, res) => {
   } catch (error) {
     console.error("Error in Task's List controller:", error);
     res.status(500).json({ message: "Internal server error" });
-  } 
+  }
 };
