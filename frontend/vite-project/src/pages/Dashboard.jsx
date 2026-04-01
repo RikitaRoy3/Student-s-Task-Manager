@@ -218,20 +218,20 @@ function Dashboard() {
       setProfilePic(data.user.profilePic || "");
 
       setCompletedTasks(
-  Array.isArray(data.user.completedTasks)
-    ? data.user.completedTasks
-    : data.user.completedTasks
-    ? [data.user.completedTasks]
-    : []
-);
+        Array.isArray(data.user.completedTasks)
+          ? data.user.completedTasks
+          : data.user.completedTasks
+            ? [data.user.completedTasks]
+            : []
+      );
 
-setPendingTasks(
-  Array.isArray(data.user.pendingTasks)
-    ? data.user.pendingTasks
-    : data.user.pendingTasks
-    ? [data.user.pendingTasks]
-    : []
-);
+      setPendingTasks(
+        Array.isArray(data.user.pendingTasks)
+          ? data.user.pendingTasks
+          : data.user.pendingTasks
+            ? [data.user.pendingTasks]
+            : []
+      );
       console.log("Dashboard data:", data.user);
 
     } catch (error) {
@@ -242,11 +242,11 @@ setPendingTasks(
 
   /* ===================== TASK STATUS ===================== */
 
-const totalTasks =
-  (pendingTasks?.length || 0) + (completedTasks?.length || 0);
+  const totalTasks =
+    (pendingTasks?.length || 0) + (completedTasks?.length || 0);
 
-const completedCount = completedTasks?.length || 0;
-const pendingCount = pendingTasks?.length || 0;
+  const completedCount = completedTasks?.length || 0;
+  const pendingCount = pendingTasks?.length || 0;
 
   /* ===================== UI ===================== */
 
