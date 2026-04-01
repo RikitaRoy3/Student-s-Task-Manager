@@ -106,25 +106,27 @@ const Taskslist = () => {
           </tr>
         </thead>
         <tbody>
-          {tasks.map((task, index) => (
+
+          
+          {pendingTasks.map((task, index) => (
             <tr key={index} className="border-t hover:bg-gray-50 transition">
-              <td className="p-4 font-medium text-gray-900">{task.name}</td>
-              <td className="p-4 text-gray-600">{task.date}</td>
+              <td className="p-4 font-medium text-gray-900">{task.TaskTitle}</td>
+              <td className="p-4 text-gray-600">{task.DueDate}</td>
               <td className="p-4">
                 <span
-                  className={`px-3 py-1 rounded-full text-xs font-bold ${task.priority === "High"
+                  className={`px-3 py-1 rounded-full text-xs font-bold ${task.Priority === "High"
                       ? "bg-red-100 text-red-700"
-                      : task.priority === "Medium"
+                      : task.Priority === "Medium"
                         ? "bg-yellow-100 text-yellow-700"
                         : "bg-green-100 text-green-700"
                     }`}
                 >
-                  {task.priority}
+                  {task.Priority}
                 </span>
               </td>
               <td className="p-4">
                 <span className="px-3 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-700">
-                  {task.status}
+                  Pending
                 </span>
               </td>
               <td className="p-4">
@@ -139,10 +141,49 @@ const Taskslist = () => {
               </td>
             </tr>
           ))}
+
+
+
+
+          {completedTasks.length > 0 &&
+          completedTasks.map((task, index) => (
+            <tr key={index} className="border-t hover:bg-gray-50 transition">
+              <td className="p-4 font-medium text-gray-900">{task.TaskTitle}</td>
+              <td className="p-4 text-gray-600">{task.DueDate}</td>
+              <td className="p-4">
+                <span
+                  className={`px-3 py-1 rounded-full text-xs font-bold ${task.Priority === "High"
+                      ? "bg-red-100 text-red-700"
+                      : task.Priority === "Medium"
+                        ? "bg-yellow-100 text-yellow-700"
+                        : "bg-green-100 text-green-700"
+                    }`}
+                >
+                  {task.Priority}
+                </span>
+              </td>
+              <td className="p-4">
+                <span className="px-3 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-700">
+                  Completed
+                </span>
+              </td>
+              <td className="p-4">
+                <div className="flex space-x-2">
+                  <button className="text-blue-600 hover:text-blue-800 font-medium text-sm p-1 rounded hover:bg-blue-50 transition">
+                    Edit
+                  </button>
+                  <button className="text-green-600 hover:text-green-800 font-medium text-sm p-1 rounded hover:bg-green-50 transition">
+                    Complete
+                  </button>
+                </div>
+              </td>
+            </tr>
+          ))}
+
         </tbody>
       </table>
 
-      {tasks.length === 0 && (
+      {(pendingTasks.length + completedTasks.length) === 0 && (
         <div className="text-center py-12">
           <div className="text-gray-400 text-6xl mb-4">📝</div>
           <h3 className="text-xl font-semibold text-gray-900 mb-2">
