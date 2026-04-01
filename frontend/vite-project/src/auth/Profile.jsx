@@ -12,15 +12,58 @@
 
 
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router";
+import { toast } from "react-toastify";
 import face from "../assets/face.png";
 
 const Profile = () => {
-  const user = {
-    name: "Sarah Johnson",
-    email: "sarah@university.edu",
-    major: "Computer Science",
-  };
+
+
+  
+    const [fullName, setFullName] = useState("");
+    const [email, setEmail] = useState("");
+    const [profilePic, setProfilePic] = useState("");
+
+    
+      useEffect(() => {
+        fetchprofile();
+      }, []);
+    
+   
+     const fetchprofile = async () => {
+       try {
+         const res = await fetch("http://localhost:3000/api/auth/profile", {
+           method: "GET",
+           credentials: "include",
+         });
+   
+         const data = await res.json();
+   
+         if (!res.ok) {
+           toast.error(data.message);
+           return;
+         }
+   
+         setFullName(data.user.fullName || "");
+         setEmail(data.user.email || "");
+         setProfilePic(data.user.profilePic || "");
+  
+   
+         console.log("Profile data:", data.user);
+   
+       } catch (error) {
+         console.error("Profile fetch error:", error);
+         toast.error("Failed to load profile data");
+       }
+     };
+
+
+  
+  // const user = {
+  //   name: {fullName},
+  //   email: {email},
+  // };
     const [emailAlerts, setEmailAlerts] = useState(true);
     const [pushNotifs, setPushNotifs] = useState(false);
 
@@ -40,12 +83,12 @@ const Profile = () => {
               />
               <div>
                 <h2 className="text-2xl font-bold text-gray-800">
-                  {user.name}
+                  {fullName}
                 </h2>
-                <p className="text-gray-500">{user.email}</p>
-                <div className="mt-2 inline-block bg-blue-50 text-blue-700 text-xs font-bold px-3 py-1 rounded-full uppercase">
+                <p className="text-gray-500">{email}</p>
+                {/* <div className="mt-2 inline-block bg-blue-50 text-blue-700 text-xs font-bold px-3 py-1 rounded-full uppercase">
                   Major: {user.major}
-                </div>
+                </div> */}
               </div>
             </div>
 
