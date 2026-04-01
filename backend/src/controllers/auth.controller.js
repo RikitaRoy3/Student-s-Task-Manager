@@ -147,3 +147,24 @@ export const taskList = async (req, res) => {
     res.status(500).json({ message: "Internal server error" });
   }
 };
+
+/* ===================== Profile  ===================== */
+
+export const profile = async (req, res) => {
+  try {
+    const user = await User.findById(req.user._id)
+      .populate("pendingTasks")
+      .populate("completedTasks");
+    res.status(200).json({
+      user: {
+        _id: user._id,
+        fullName: user.fullName,
+        email: user.email,
+        profilePic: user.profilePic,
+      },
+    });
+  } catch (error) {
+    console.error("Error in Task's List controller:", error);
+    res.status(500).json({ message: "Internal server error" });
+  }
+};
