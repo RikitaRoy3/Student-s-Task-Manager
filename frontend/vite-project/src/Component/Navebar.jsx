@@ -86,6 +86,8 @@ import React from "react";
 import logo from "../assets/logo.jpg";
 import profile from "../auth/Profile.jsx"
 import { Link } from "react-router";
+import face from "../assets/face.png"
+
 
 function Navbar() {
   return (
@@ -125,7 +127,7 @@ function Navbar() {
               </Link>
             </div>
             <div>
-             <Link to="/profile"><img src={profile} className="mr-3 h-15 rounded-full sm:h-9"/></Link>
+             <Link to="/profile"><img src={ face || profile} className="mr-3 h-15 rounded-full sm:h-9" alt="profile"/></Link>
             </div>
           </div>
         </div>
