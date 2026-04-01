@@ -17,14 +17,14 @@ const UserSchema = new mongoose.Schema({
     required: true,
     trim: true,
   },
-  completedTasks: {
+  completedTasks: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: "Task"
-  },
-  pendingTasks: {
+  }],
+  pendingTasks: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: "Task"
-  },
+  }],
   profilePic: {
     type: String,
     default: "",
