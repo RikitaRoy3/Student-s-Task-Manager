@@ -217,21 +217,24 @@ function Dashboard() {
       setEmail(data.user.email || "");
       setProfilePic(data.user.profilePic || "");
 
-      setCompletedTasks(
-        Array.isArray(data.user.completedTasks)
-          ? data.user.completedTasks
-          : data.user.completedTasks
-            ? [data.user.completedTasks]
-            : []
-      );
+      // setCompletedTasks(
+      //   Array.isArray(data.user.completedTasks)
+      //     ? data.user.completedTasks
+      //     : data.user.completedTasks
+      //       ? [data.user.completedTasks]
+      //       : []
+      // );
 
-      setPendingTasks(
-        Array.isArray(data.user.pendingTasks)
-          ? data.user.pendingTasks
-          : data.user.pendingTasks
-            ? [data.user.pendingTasks]
-            : []
-      );
+      // setPendingTasks(
+      //   Array.isArray(data.user.pendingTasks)
+      //     ? data.user.pendingTasks
+      //     : data.user.pendingTasks
+      //       ? [data.user.pendingTasks]
+      //       : []
+      // );
+      setCompletedTasks(data.user.completedTasks);
+      setPendingTasks(data.user.pendingTasks);
+
       console.log("Dashboard data:", data.user);
 
     } catch (error) {
