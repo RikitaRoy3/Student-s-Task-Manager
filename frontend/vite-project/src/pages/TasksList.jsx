@@ -25,7 +25,33 @@ const Taskslist = () => {
 
   /* ===================== connecting Backend's SIGNUP ===================== */
   
-  
+  let pressedcomplete= async (id) => {
+    // event.preventDefault();
+    const res = await fetch("http://localhost:3000/api/task/pending_to_completed", {
+      method: "PUT",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        Task_Id: id
+      }),
+    });
+
+    const data1 = await res.json();
+
+    res.ok
+      ? toast.success("Task Shifting Successful !!")
+      : toast.error(data1.message);
+
+    console.log("id:", data1.task._id);
+    console.log("TaskTitle:", data1.task.TaskTitle);
+    console.log("Description:", data1.task.Description);
+    console.log("Priority:", data1.task.Priority);
+    console.log("DueDate:", data1.task.DueDate);
+    console.log("User_Id:", data1.task.User_Id);
+    
+  };
   
   
   let pressedRegister = async (event) => {
@@ -39,7 +65,7 @@ const Taskslist = () => {
     const data = await res.json();
 
     res.ok
-      ? toast.success("Successful !!")
+      ? toast.success(" Successful !!")
       : toast.error(data.message);
 
     setid(data.user._id);
@@ -134,7 +160,7 @@ const Taskslist = () => {
                   <button className="text-blue-600 hover:text-blue-800 font-medium text-sm p-1 rounded hover:bg-blue-50 transition">
                     Edit
                   </button>
-                  <button className="text-green-600 hover:text-green-800 font-medium text-sm p-1 rounded hover:bg-green-50 transition">
+                  <button onClick={(event) =>{ event.target.disabled = true; pressedcomplete(task._id)}} className="text-green-600 hover:text-green-800 font-medium text-sm p-1 rounded hover:bg-green-50 transition">
                     Complete
                   </button>
                 </div>
@@ -173,7 +199,7 @@ const Taskslist = () => {
                     Edit
                   </button>
                   <button className="text-green-600 hover:text-green-800 font-medium text-sm p-1 rounded hover:bg-green-50 transition">
-                    Complete
+                    Pending
                   </button>
                 </div>
               </td>
