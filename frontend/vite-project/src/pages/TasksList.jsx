@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 const Taskslist = () => {
 
 
-
+/* ===================== function to rerender UI whenever called ===================== */
   const hasFetched = useRef(false);
 
   useEffect(() => {
@@ -23,7 +23,7 @@ const Taskslist = () => {
   let [pendingTasks, setPendingTasks] = useState([]);
 
 
-  /* ===================== connecting Backend's SIGNUP ===================== */
+  /* ===================== function connecting Backend's completed_to_pending ===================== */
 
   let pressedcomplete = async (id) => {
     // event.preventDefault();
@@ -60,7 +60,7 @@ const Taskslist = () => {
 
 
 
-
+/* ===================== function connecting Backend's completed_to_pending ===================== */
 
 
 
@@ -97,6 +97,7 @@ const Taskslist = () => {
   };
 
 
+  /* ===================== function connecting Backend's Tasklist ===================== */
 
   let pressedRegister = async (event) => {
     // event.preventDefault();

@@ -99,6 +99,18 @@ export const login = async (req, res) => {
   }
 };
 
+/* ===================== LOGOUT ===================== */
+
+export const logout = (req, res) => {
+  res.cookie("jwt", "", {
+    httpOnly: true,
+    expires: new Date(0),
+    secure: ENV.NODE_ENV !== "development",
+  });
+
+  res.status(200).json({ message: "Logout successful" });
+};
+
 /* ===================== Dashboard ===================== */
 
 export const dashboard = async (req, res) => {
