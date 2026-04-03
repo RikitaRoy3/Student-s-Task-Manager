@@ -84,35 +84,7 @@ const Taskslist = () => {
     
   };
 
-
-
-
-  const tasks = [
-    // {
-    //   name: "Read Chapter 4",
-    //   date: "03-Jul-2024",
-    //   priority: "High",
-    //   status: "Pending",
-    // },
-    // {
-    //   name: "Biology Assignment",
-    //   date: "01-Jul-2024",
-    //   priority: "Low",
-    //   status: "Pending",
-    // },
-    // {
-    //   name: "Essay writing",
-    //   date: "20-Jul-2024",
-    //   priority: "Medium",
-    //   status: "Pending",
-    // },
-    // {
-    //   name: "History revision",
-    //   date: "01-Jul-2024",
-    //   priority: "High",
-    //   status: "Pending",
-    // },
-  ];
+  
 
   return (
     <div className="p-8">

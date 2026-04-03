@@ -86,3 +86,43 @@ export const pending_to_completed = async (req, res) => {
     res.status(500).json({ message: "Internal server error" });
   }
 }
+
+
+
+
+
+
+export const completed_to_pending = async (req, res) => {
+  try {
+    const { Task_Id } = req.body;
+
+    const task = await Task.findById(Task_Id);
+    
+    if (!task) {
+      return res.status(400).json({ message: "Task not found" });
+    }
+
+    req.user.pendingTasks.push(task._id);
+    await task.save();
+
+    req.user.completedTasks.pull(task._id);
+    await req.user.save();
+
+    res.status(201).json({
+      task: {
+        message: "Task moved to pending successfully",
+        Task_Id: task._id,
+        TaskTitle: task.TaskTitle,
+        Description: task.Description,
+        Priority: task.Priority,
+        DueDate: task.DueDate,
+        User_Id: task.user
+      },
+    });
+  }
+  catch (error) {
+    console.error("Error in pending_to_completed controller:", error);
+    res.status(500).json({ message: "Internal server error" });
+  }
+}
+
