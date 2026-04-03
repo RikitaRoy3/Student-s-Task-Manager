@@ -53,6 +53,41 @@ const Taskslist = () => {
     
   };
   
+
+
+
+
+
+
+  let pressedpending= async (id) => {
+    // event.preventDefault();
+    const res = await fetch("http://localhost:3000/api/task/completed_to_pending", {
+      method: "PUT",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        Task_Id: id
+      }),
+    });
+
+    const data1 = await res.json();
+
+    res.ok
+      ? toast.success("Task Shifting Successful !!")
+      : toast.error(data1.message);
+
+    console.log("id:", data1.task._id);
+    console.log("TaskTitle:", data1.task.TaskTitle);
+    console.log("Description:", data1.task.Description);
+    console.log("Priority:", data1.task.Priority);
+    console.log("DueDate:", data1.task.DueDate);
+    console.log("User_Id:", data1.task.User_Id);
+    
+  };
+  
+  
   
   let pressedRegister = async (event) => {
     // event.preventDefault();
@@ -84,7 +119,7 @@ const Taskslist = () => {
     
   };
 
-  
+
 
   return (
     <div className="p-8">
@@ -170,7 +205,7 @@ const Taskslist = () => {
                   <button className="text-blue-600 hover:text-blue-800 font-medium text-sm p-1 rounded hover:bg-blue-50 transition">
                     Edit
                   </button>
-                  <button className="text-green-600 hover:text-green-800 font-medium text-sm p-1 rounded hover:bg-green-50 transition">
+                  <button onClick={(e)=>{e.target.disabled=true; pressedpending(task._id)}} className="text-green-600 hover:text-green-800 font-medium text-sm p-1 rounded hover:bg-green-50 transition">
                     Pending
                   </button>
                 </div>
