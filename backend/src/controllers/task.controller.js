@@ -70,7 +70,7 @@ export const pending_to_completed = async (req, res) => {
     await req.user.save();
 
     res.status(201).json({
-      user: {
+      task: {
         message: "Task completed successfully",
         Task_Id: task._id,
         TaskTitle: task.TaskTitle,
