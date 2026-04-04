@@ -82,14 +82,60 @@
 
 
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import logo from "../assets/logo.jpg";
-import profile from "../auth/Profile.jsx"
+import { toast } from "react-toastify";
 import { Link } from "react-router";
 import male_face from "../assets/male_face.png"
+import female_face from "../assets/female_face.jpeg"
+
+
+
 
 
 function Navbar() {
+
+
+  const [gender, setGender] = useState("");
+
+  useEffect(() => {
+    avatar();
+  }, []);
+
+  /* ===================== connecting Backend's Avatar controller ===================== */
+
+  const avatar = async () => {
+    try {
+      const res = await fetch("http://localhost:3000/api/auth/avatar", {
+        method: "GET",
+        credentials: "include",
+      });
+
+      const data2 = await res.json();
+
+      setGender(data2.user.gender);
+      console.log("Avatar data:", data2.user.gender);
+
+      if (res.ok) {
+        toast.success("Avatar loaded successfully");
+      } else {
+        toast.error(data2.message);
+        return;
+      }
+
+
+
+    } catch (error) {
+      console.error("Profile fetch error:", error);
+      toast.error("Failed to load profile data");
+    }
+  };
+
+
+
+
+
+
   return (
     <header>
       <nav className="bg-white border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-linear-to-r from-cyan-300 from-sky-700 to-blue-900">
@@ -127,7 +173,7 @@ function Navbar() {
               </Link>
             </div>
             <div>
-             <Link to="/profile"><img src={male_face} className="mr-3 h-15 rounded-full sm:h-9" alt="profile"/></Link>
+              <Link to="/profile"><img src={gender === "Male" ? male_face : female_face} className="mr-3 h-15 rounded-full sm:h-9" alt="profile" /></Link>
             </div>
           </div>
         </div>
