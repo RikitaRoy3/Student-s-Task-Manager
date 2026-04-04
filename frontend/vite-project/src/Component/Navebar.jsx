@@ -85,7 +85,7 @@
 import React, { useState, useEffect } from "react";
 import logo from "../assets/logo.jpg";
 import { toast } from "react-toastify";
-import { Link } from "react-router";
+import { Link,useLocation } from "react-router";
 import male_face from "../assets/male_face.png"
 import female_face from "../assets/female_face.jpeg"
 
@@ -94,13 +94,13 @@ import female_face from "../assets/female_face.jpeg"
 
 
 function Navbar() {
-
+const location = useLocation();
 
   const [gender, setGender] = useState("");
 
   useEffect(() => {
     avatar();
-  }, []);
+  }, [location]);//Now whenever you navigate: login → dashboard  , signup → dashboard , profile → dashboard . React detects rute change and runs avatar() again.So the correct avatar loads automatically without refreshing.
 
   /* ===================== connecting Backend's Avatar controller ===================== */
 
