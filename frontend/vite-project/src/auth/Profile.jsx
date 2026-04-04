@@ -15,7 +15,8 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router";
 import { toast } from "react-toastify";
-import face from "../assets/face.png";
+import male_face from "../assets/male_face.png";
+import female_face from "../assets/female_face.jpeg";
 
 const Profile = () => {
 
@@ -24,10 +25,12 @@ const Profile = () => {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [profilePic, setProfilePic] = useState("");
+  const [gender, setGender] = useState("");
 
 
   useEffect(() => {
     fetchprofile();
+    avatar();
   }, []);
 
   /* ===================== connecting Backend's Profile details fetching controller ===================== */
@@ -58,7 +61,7 @@ const Profile = () => {
     }
   };
 
-  /* ===================== connecting Backend's Profile details fetching controller ===================== */
+  /* ===================== connecting Backend's Logout controller ===================== */
   const function_to_logout = async () => {
     try {
       const res = await fetch("http://localhost:3000/api/auth/logout", {
@@ -69,7 +72,7 @@ const Profile = () => {
       const data = await res.json();
 
       if (res.ok) {
-    
+
         toast.success("Logged out successfully");
         return;
       } else {
@@ -81,6 +84,37 @@ const Profile = () => {
       toast.error("Failed to logout");
     }
   };
+
+  /* ===================== connecting Backend's Avatar controller ===================== */
+
+  const avatar = async () => {
+    try {
+      const res = await fetch("http://localhost:3000/api/auth/avatar", {
+        method: "GET",
+        credentials: "include",
+      });
+
+      const data2 = await res.json();
+
+      setGender(data2.user.gender);
+      console.log("Avatar data:", data2.user.gender);
+
+      if (res.ok) {
+        toast.success("Avatar loaded successfully");
+      } else {
+        toast.error(data2.message);
+        return;
+      }
+
+
+
+    } catch (error) {
+      console.error("Profile fetch error:", error);
+      toast.error("Failed to load profile data");
+    }
+  };
+
+
   // const user = {
   //   name: {fullName},
   //   email: {email},
@@ -98,7 +132,7 @@ const Profile = () => {
         <div className="p-8">
           <div className="flex items-center space-x-6 mb-8 pb-8 border-b border-gray-100">
             <img
-              src={face}
+              src={gender === "Male" ? male_face : female_face}
               alt="Profile"
               className="w-20 h-20 rounded-full border-4 border-blue-50 object-cover"
             />
