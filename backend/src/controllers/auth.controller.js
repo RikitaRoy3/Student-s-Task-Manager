@@ -191,7 +191,9 @@ export const avatar = async (req, res) => {
     const user = await User.findById(req.user._id)
     
     res.status(200).json({
+      user: {
         gender: user.gender
+      },
       
     });
   } catch (error) {
