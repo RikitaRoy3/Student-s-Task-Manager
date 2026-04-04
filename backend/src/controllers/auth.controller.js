@@ -12,10 +12,10 @@ dotenv.config();
 
 /* ===================== SIGNUP ===================== */
 export const signup = async (req, res) => {
-  const { fullName, email, password } = req.body;
+  const { fullName, email, password, gender } = req.body;
 
   try {
-    if (!fullName || !email || !password) {
+    if (!fullName || !email || !password || !gender) {
       return res.status(400).json({ message: "Please provide all the required fields" });
     }
 
@@ -40,6 +40,7 @@ export const signup = async (req, res) => {
       fullName,
       email,
       password: hashedPassword,
+      gender,
       profilePic: "",
     });
 
@@ -51,6 +52,7 @@ export const signup = async (req, res) => {
         _id: newUser._id,
         fullName: newUser.fullName,
         email: newUser.email,
+        gender: newUser.gender,
         profilePic: newUser.profilePic,
       },
     });
@@ -174,6 +176,23 @@ export const profile = async (req, res) => {
         email: user.email,
         profilePic: user.profilePic,
       },
+    });
+  } catch (error) {
+    console.error("Error in Task's List controller:", error);
+    res.status(500).json({ message: "Internal server error" });
+  }
+};
+
+
+/* ===================== Avatar  ===================== */
+
+export const avatar = async (req, res) => {
+  try {
+    const user = await User.findById(req.user._id)
+    
+    res.status(200).json({
+        gender: user.gender
+      
     });
   } catch (error) {
     console.error("Error in Task's List controller:", error);
