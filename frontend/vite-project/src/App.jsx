@@ -42,6 +42,7 @@ import Login from "./auth/Login.jsx";
 import Signup from "./auth/Signup.jsx";
 import Taskslist from "./pages/Taskslist.jsx";
 import Home from "./Component/Home.jsx";
+import ProtectedRoute from "./Component/ProtectedRoute.jsx";
 
 function App() {
   return (
@@ -49,7 +50,7 @@ function App() {
       <Navbar />
       {/* <Home/> */}
       <Routes>
-        <Route path="/" element={<Home />}></Route>
+        <Route path="/" element={<ProtectedRoute><Home/></ProtectedRoute>}></Route>
         <Route path="/dashboard" element={<Dashboard />}></Route>
         <Route path="/tasks-list" element={<Taskslist />}></Route>
         <Route path="/login" element={<Login />}></Route>
