@@ -32,8 +32,9 @@
 
 
 
-import React from "react";
-import { Routes, Route } from "react-router";
+import React, {useEffect} from "react";
+import { Routes, Route, useNavigate } from "react-router";
+import { toast } from "react-toastify";
 import Navbar from "./Component/Navebar.jsx";
 import Dashboard from "./pages/Dashboard.jsx";
 import Add from "./pages/Add.jsx";
@@ -45,17 +46,18 @@ import Home from "./Component/Home.jsx";
 import ProtectedRoute from "./Component/ProtectedRoute.jsx";
 
 function App() {
+
   return (
     <div>
       <Navbar />
       {/* <Home/> */}
       <Routes>
         <Route path="/" element={<ProtectedRoute><Home/></ProtectedRoute>}></Route>
-        <Route path="/dashboard" element={<Dashboard />}></Route>
-        <Route path="/tasks-list" element={<Taskslist />}></Route>
+        <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>}></Route>
+        <Route path="/tasks-list" element={<ProtectedRoute><Taskslist /></ProtectedRoute>}></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/Signup" element={<Signup />}></Route>
-        <Route path="/profile" element={<Profile />}></Route>
+        <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>}></Route>
         
         <Route path="/add" element={<Add />}></Route>
       </Routes>
