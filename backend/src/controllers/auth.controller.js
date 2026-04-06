@@ -201,20 +201,3 @@ export const avatar = async (req, res) => {
     res.status(500).json({ message: "Internal server error" });
   }
 };
-
-/* ===================== Authentication Check  ===================== */
-
-export const authCheck = async (req, res) => {
-  try {
-    const user = await User.findById(req.user._id)
- 
-    res.status(200).json({
-      user: {
-        message: "Authenticated"
-      },
-    });
-  } catch (error) {
-    console.error("Error in Task's List controller:", error);
-    res.status(500).json({ message: "Internal server error" });
-  }
-};
