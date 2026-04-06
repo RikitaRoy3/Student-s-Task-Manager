@@ -11,6 +11,7 @@ const router = express.Router();
 
 router.post("/signup", signup);
 router.post("/login", login);
+router.get("/checkauth", checkauth);
 router.post("/logout", checkauth, logout);
 router.get("/dashboard", checkauth, dashboard);
 router.get("/tasklist", checkauth, taskList);
