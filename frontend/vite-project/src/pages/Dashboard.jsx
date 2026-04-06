@@ -180,7 +180,7 @@
 
 
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router";
+import { Link,useNavigate } from "react-router";
 import { toast } from "react-toastify";
 
 function Dashboard() {
@@ -199,50 +199,39 @@ function Dashboard() {
     fetchDashboard();
   }, []);
 
-  const fetchDashboard = async () => {
-    try {
-      const res = await fetch("http://localhost:3000/api/auth/dashboard", {
-        method: "GET",
-        credentials: "include",
-      });
+  const navigate = useNavigate();//This variable will be used To  navige unauthorized users to Login Page when they try to access Dashboard without logging in.
 
-      const data = await res.json();
+const fetchDashboard = async () => {
+  try {
+    const res = await fetch("http://localhost:3000/api/auth/dashboard", {
+      method: "GET",
+      credentials: "include",
+    });
 
-      if (!res.ok) {
-        toast.error(data.message);
+    const data = await res.json();
+
+    if (!res.ok) {
+      if (data.message === "Unauthorized User" || data.message === "User not found") {
+        toast.error("Please login first");
+        navigate("/login");
         return;
       }
 
-      setFullName(data.user.fullName || "");
-      setEmail(data.user.email || "");
-      setProfilePic(data.user.profilePic || "");
-
-      // setCompletedTasks(
-      //   Array.isArray(data.user.completedTasks)
-      //     ? data.user.completedTasks
-      //     : data.user.completedTasks
-      //       ? [data.user.completedTasks]
-      //       : []
-      // );
-
-      // setPendingTasks(
-      //   Array.isArray(data.user.pendingTasks)
-      //     ? data.user.pendingTasks
-      //     : data.user.pendingTasks
-      //       ? [data.user.pendingTasks]
-      //       : []
-      // );
-      setCompletedTasks(data.user.completedTasks);
-      setPendingTasks(data.user.pendingTasks);
-
-      console.log("Dashboard data:", data.user);
-
-    } catch (error) {
-      console.error("Dashboard fetch error:", error);
-      toast.error("Failed to load dashboard");
+      toast.error(data.message);
+      return;
     }
-  };
 
+    setFullName(data.user.fullName || "");
+    setEmail(data.user.email || "");
+    setProfilePic(data.user.profilePic || "");
+    setCompletedTasks(data.user.completedTasks);
+    setPendingTasks(data.user.pendingTasks);
+
+  } catch (error) {
+    console.error("Dashboard fetch error:", error);
+    toast.error("Failed to load dashboard");
+  }
+};
   /* ===================== TASK STATUS ===================== */
 
   const totalTasks =
