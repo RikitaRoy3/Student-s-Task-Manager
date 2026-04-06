@@ -210,16 +210,15 @@ const fetchDashboard = async () => {
 
     const data = await res.json();
 
-    if (!res.ok) {
-      if (data.message === "Unauthorized User" || data.message === "User not found") {
-        toast.error("Please login first");
-        navigate("/login");
-        return;
-      }
 
+    if(res.ok){
+      toast.success("Dashboard loaded successfully");
+    }
+    else{
       toast.error(data.message);
       return;
     }
+    
 
     setFullName(data.user.fullName || "");
     setEmail(data.user.email || "");
