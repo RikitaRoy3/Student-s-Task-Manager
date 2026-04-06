@@ -9,13 +9,13 @@ export const checkauth = async (req, res, next) => {
   try {
     const token = req.cookies.jwt;
     if (!token) {
-      return res.status(401).json({ message: "Unauthorized( Token only doesn't exist )" });
+      return res.status(401).json({ message: "Unauthorized User" });
     }
     const verified_token = jwt.verify(token, ENV.JWT_SECRET);
-    if (!verified_token) return res.status(401).json({ message: "Unauthorized - Invalid token" });
+    if (!verified_token) return res.status(401).json({ message: "Unauthorized User" });
 
     const user = await User.findById(verified_token.userId).select("-password");
-    if (!user) return res.status(404).json({ message: "Token exists and valid but User not found" });
+    if (!user) return res.status(404).json({ message: "User not found" });
 
     else {
       req.user=user;
