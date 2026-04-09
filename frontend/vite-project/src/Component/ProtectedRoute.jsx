@@ -11,7 +11,7 @@ function ProtectedRoute({ children }) {
 
   const authCheck = async () => {
     try {
-      const res = await fetch("http://localhost:3000/api/auth/auth-check", {
+      const res = await fetch("http://localhost:3000/api/auth/checkauth", {
         method: "GET",
         credentials: "include",
       });
