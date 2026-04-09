@@ -1,6 +1,8 @@
 import User from "../models/User.js";
 import bcrypt from "bcryptjs";
+import cloudinary from "../lib/cloudinary.js";
 import { ENV } from "../lib/env.js";
+
 import { generateToken } from "../lib/generatetoken.js";
 import { sendWelcomeEmail } from "../emails/emailHandlers.js";
 
@@ -189,15 +191,70 @@ export const profile = async (req, res) => {
 export const avatar = async (req, res) => {
   try {
     const user = await User.findById(req.user._id)
-    
+
     res.status(200).json({
       user: {
         gender: user.gender
       },
-      
+
     });
   } catch (error) {
     console.error("Error in Task's List controller:", error);
     res.status(500).json({ message: "Internal server error" });
   }
 };
+
+/* ===================== Edit Profile  ===================== */
+
+export const editProfile = async (req, res) => {
+  try {
+    const user = await User.findById(req.user._id)
+
+    const { fullName, email, gender, password, profilePic } = res.body;
+
+    if (!fullName || !email || !gender || !password || !profilePic) {
+      return res.status(400).json({ message: "Nothing to Update" });
+    }
+    if (password.length < 6) {
+      return res.status(400).json({ message: "Password must be at least 6 characters long" });
+    }
+    if (email.regrex(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
+      return res.status(400).json({ message: "Invalid email address" });
+    }
+
+    if (fullName) {
+      user.fullName = fullName;
+    }
+    if (email) {
+      user.email = email;
+    }
+    if (gender) {
+      user.gender = gender;
+    }
+    if (password) {
+      const salt = await bcrypt.genSalt(10);
+      const hashedPassword = await bcrypt.hash(password, salt);
+      user.password = hashedPassword;
+    }
+    if (profilePic) {
+      const uploadResult = await cloudinary.uploader.upload(profilePic);
+      updates.profilePic = uploadResult.secure_url;
+      user.profilePic = profilePic;
+    }
+
+
+      res.status(200).json({
+        user: {
+          _id: user._id,
+          fullName: user.fullName,
+          email: user.email,
+          profilePic: user.profilePic,  
+          gender: user.gender
+        },
+
+      });
+    } catch (error) {
+      console.error("Error in Task's List controller:", error);
+      res.status(500).json({ message: "Internal server error" });
+    }
+  };
