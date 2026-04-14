@@ -28,9 +28,9 @@ function Signup() {
 
     const data = await res.json();
 
-    res.ok
-      ? toast.success("Signup successful")
-      : toast.error(data.message);
+    if(!res.ok) {
+      console.log("Signup error:", data.message);
+    }
   };
 
 
