@@ -16,6 +16,12 @@ export const new_task = async (req, res) => {
       return res.status(400).json({ message: "Please provide all the required fields" });
     }
 
+    const task=await Task.findOne({ TaskTitle, user: req.user._id });
+
+    if(task){
+      return res.status(400).json({ message: "Task with the same title already exists" });
+    }
+
     const new_task = await Task.create({
       TaskTitle,
       Description,
