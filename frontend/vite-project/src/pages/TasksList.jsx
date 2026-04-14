@@ -42,11 +42,11 @@ const Taskslist = () => {
 
   
     if (res.ok) {
-      toast.success("Task Shifting Successful !!");
+      // toast.success("Task Shifting Successful !!");
       pressedRegister();
     }
     else {
-      toast.error(data1.message);
+      console.log("Task Shifting error:", data1.message);
     }
 
     console.log("id:", data1.task._id);
@@ -80,11 +80,11 @@ const Taskslist = () => {
     const data1 = await res.json();
 
     if (res.ok) {
-      toast.success("Task Shifting Successful !!");
+      // toast.success("Task Shifting Successful !!");
       pressedRegister();
     }
     else {
-      toast.error(data1.message);
+      console.log("Task Shifting error:", data1.message);
     }
 
     console.log("id:", data1.task._id);
@@ -109,9 +109,10 @@ const Taskslist = () => {
 
     const data = await res.json();
 
-    res.ok
-      ? toast.success(" Successful !!")
-      : toast.error(data.message);
+    if(!res.ok){
+      // ? toast.success(" Successful !!")
+       console.log("Task List error:", data.message);
+    }
 
     setid(data.user._id);
     setFullName(data.user.fullName);

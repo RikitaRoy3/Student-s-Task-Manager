@@ -30,9 +30,12 @@ function Add() {
 
     const data = await res.json();
 
-    res.ok
-      ? toast.success("New Task added successfully")
-      : toast.error(data.message);
+    if (!res.ok) {
+      console.log("Add Task error:", data.message);
+    }
+    else{
+      toast.success("Task added successfully");
+    }
   };
 
 

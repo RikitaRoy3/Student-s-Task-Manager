@@ -211,12 +211,9 @@ const fetchDashboard = async () => {
     const data = await res.json();
 
 
-    if(res.ok){
-      toast.success("Dashboard loaded successfully");
-    }
-    else{
-      toast.error(data.message);
-      return;
+    if(!res.ok){
+      console.log("Dashboard error:", data.message);
+      
     }
     
 
@@ -228,7 +225,7 @@ const fetchDashboard = async () => {
 
   } catch (error) {
     console.error("Dashboard fetch error:", error);
-    toast.error("Failed to load dashboard");
+    // toast.error("Failed to load dashboard");
   }
 };
   /* ===================== TASK STATUS ===================== */
