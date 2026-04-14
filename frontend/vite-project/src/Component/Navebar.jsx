@@ -116,10 +116,8 @@ const location = useLocation();
       setGender(data2.user.gender);
       console.log("Avatar data:", data2.user.gender);
 
-      if (res.ok) {
-        toast.success("Avatar loaded successfully");
-      } else {
-        toast.error(data2.message);
+      if (!res.ok) {
+        console.log("Avatar error:", data2.message);
         return;
       }
 
@@ -127,7 +125,7 @@ const location = useLocation();
 
     } catch (error) {
       console.error("Profile fetch error:", error);
-      toast.error("Failed to load profile data");
+      // toast.error("Failed to load profile data");
     }
   };
 
