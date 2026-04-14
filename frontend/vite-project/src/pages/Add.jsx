@@ -31,11 +31,17 @@ function Add() {
     const data = await res.json();
 
     if (!res.ok) {
+      if(data.message=="Task with the same title already exists"){
+        toast.error(data.message);
+      }
+      else{
       console.log("Add Task error:", data.message);
+      }
     }
     else{
       toast.success("Task added successfully");
     }
+
   };
 
 
