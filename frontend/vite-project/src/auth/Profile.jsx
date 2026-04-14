@@ -74,6 +74,9 @@ const Profile = () => {
       if (!res.ok) {
         console.log("Logout error:", data.message);
       }
+      else{
+        toast.success("Logged out successfully");
+      }
 
     } catch (error) {
       console.error("Logout error:", error);
