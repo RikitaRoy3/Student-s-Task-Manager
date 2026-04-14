@@ -43,10 +43,10 @@ const Profile = () => {
 
       const data = await res.json();
 
-      if (!res.ok) {
-        toast.error(data.message);
-        return;
-      }
+      // if (!res.ok) {
+      //   toast.error(data.message);
+      //   return;
+      // }
 
       setFullName(data.user.fullName || "");
       setEmail(data.user.email || "");
@@ -57,7 +57,7 @@ const Profile = () => {
 
     } catch (error) {
       console.error("Profile fetch error:", error);
-      toast.error("Failed to load profile data");
+      // toast.error("Failed to load profile data");
     }
   };
 
@@ -71,17 +71,13 @@ const Profile = () => {
 
       const data = await res.json();
 
-      if (res.ok) {
-
-        toast.success("Logged out successfully");
-        return;
-      } else {
-        toast.error(data.message);
+      if (!res.ok) {
+        console.log("Logout error:", data.message);
       }
 
     } catch (error) {
       console.error("Logout error:", error);
-      toast.error("Failed to logout");
+      // toast.error("Failed to logout");
     }
   };
 
@@ -99,10 +95,8 @@ const Profile = () => {
       setGender(data2.user.gender);
       console.log("Avatar data:", data2.user.gender);
 
-      if (res.ok) {
-        toast.success("Avatar loaded successfully");
-      } else {
-        toast.error(data2.message);
+      if (!res.ok) {
+        console.log("Avatar error:", data2.message);
         return;
       }
 
@@ -110,7 +104,7 @@ const Profile = () => {
 
     } catch (error) {
       console.error("Profile fetch error:", error);
-      toast.error("Failed to load profile data");
+      // toast.error("Failed to load profile data");
     }
   };
 
