@@ -258,3 +258,33 @@ export const editProfile = async (req, res) => {
       res.status(500).json({ message: "Internal server error" });
     }
   };
+
+  const uploadAvatar = async (req, res) => {
+    try {
+      const user = await User.findById(req.user._id)
+
+      const { profilePic } = res.body;
+
+      if (!profilePic) {
+        return res.status(400).json({ message: "Nothing to Update" });
+      }
+
+      const uploadResult = await cloudinary.uploader.upload(profilePic);
+      updates.profilePic = uploadResult.secure_url;
+      user.profilePic = profilePic;
+
+      res.status(200).json({
+        user: {
+          _id: user._id,
+          fullName: user.fullName,
+          email: user.email,
+          profilePic: user.profilePic,  
+          gender: user.gender
+        },
+
+      });
+    } catch (error) {
+      console.error("Error in Task's List controller:", error);
+      res.status(500).json({ message: "Internal server error" });
+    }
+  };
