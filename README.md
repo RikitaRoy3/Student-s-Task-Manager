@@ -21,21 +21,6 @@ This is a basic Students's Task Manager website created using ReactJS. ,MongoDB,
   - MongoDB
   - ExpressJS
   - NodeJS
-  - Material UI
-  - Bootstrap
-  - Font Awesome
-
-## Screenshots
-![Screenshot](https://github.com/rikitaroy/Students-Task-Manager/blob/master/Screenshots/screenshot1.png)
-![Screenshot](https://github.com/rikitaroy/Students-Task-Manager/blob/master/Screenshots/screenshot2.png)
-![Screenshot](https://github.com/rikitaroy/Students-Task-Manager/blob/master/Screenshots/screenshot3.png)
-![Screenshot](https://github.com/rikitaroy/Students-Task-Manager/blob/master/Screenshots/screenshot4.png)
-![Screenshot](https://github.com/rikitaroy/Students-Task-Manager/blob/master/Screenshots/screenshot5.png)
-![Screenshot](https://github.com/rikitaroy/Students-Task-Manager/blob/master/Screenshots/screenshot6.png)
-![Screenshot](https://github.com/rikitaroy/Students-Task-Manager/blob/master/Screenshots/screenshot7.png)
-![Screenshot](https://github.com/rikitaroy/Students-Task-Manager/blob/master/Screenshots/screenshot8.png)
-![Screenshot](https://github.com/rikitaroy/Students-Task-Manager/blob/master/Screenshots/screenshot9.png)
-![Screenshot](https://github.com/rikitaroy/Students-Task-Manager/blob/master/Screenshots/screenshot10.png)
 
 ## How to run
 1. Clone the repository
