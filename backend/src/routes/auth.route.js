@@ -1,5 +1,5 @@
 import express from "express";
-import { signup, login, dashboard, taskList, profile,logout, avatar, editProfile } from "../controllers/auth.controller.js";
+import { signup, login, dashboard, taskList, profile,logout, avatar, editProfile, uploadAvatar } from "../controllers/auth.controller.js";
 import { checkauth } from "../middleware/auth.middleware.js";
 
 
@@ -16,7 +16,7 @@ router.get("/checkauth", checkauth, (req, res) => {
 });
 router.put("/editprofile", checkauth, editProfile);
 router.post("/logout", checkauth, logout);
-// router.post("/uploadavatar", checkauth, uploadAvatar);
+router.post("/uploadavatar", checkauth, uploadAvatar);
 router.get("/dashboard", checkauth, dashboard);
 router.get("/tasklist", checkauth, taskList);
 router.get("/profile", checkauth, profile);

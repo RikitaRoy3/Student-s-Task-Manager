@@ -259,7 +259,7 @@ export const editProfile = async (req, res) => {
     }
   };
 
-  const uploadAvatar = async (req, res) => {
+ export const uploadAvatar = async (req, res) => {
     try {
       const user = await User.findById(req.user._id)
 
