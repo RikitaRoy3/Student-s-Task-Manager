@@ -74,7 +74,7 @@ const Profile = () => {
       if (!res.ok) {
         console.log("Logout error:", data.message);
       }
-      else{
+      else {
         toast.success("Logged out successfully");
       }
 
@@ -110,6 +110,7 @@ const Profile = () => {
       // toast.error("Failed to load profile data");
     }
   };
+
 
 
   // const user = {
@@ -159,7 +160,12 @@ const Profile = () => {
               <div className="flex items-center space-x-3">
                 <span className="text-blue-600">✏️</span>
                 <span className="font-semibold text-gray-700">
+                  <Link
+                    to="/editprofile"
+                    className="py-2 px-5 ml-3 bg-white border rounded-xl hover:scale-110 duration-300 border-blue-400  "
+                  >
                   Edit Profile
+                  </Link>
                 </span>
               </div>
               <span className="text-gray-400 group-hover:text-blue-600">
