@@ -121,7 +121,7 @@ const Profile = () => {
   // const [pushNotifs, setPushNotifs] = useState(false);
 
   return (
-    <div className="p-6 bg-gray-50 min-h-screen flex justify-center">
+    <div className="min-h-screen bg-gray-200 flex items-center justify-center">
       <div className="w-full max-w-2xl bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
         <div className="bg-blue-700 p-6 text-white text-center">
           <h1 className="text-xl font-bold">Profile & Settings</h1>
