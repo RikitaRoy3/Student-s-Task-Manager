@@ -177,6 +177,8 @@ export const profile = async (req, res) => {
         fullName: user.fullName,
         email: user.email,
         profilePic: user.profilePic,
+        gender: user.gender,
+        password: user.password
       },
     });
   } catch (error) {
@@ -210,81 +212,91 @@ export const editProfile = async (req, res) => {
   try {
     const user = await User.findById(req.user._id)
 
-    const { fullName, email, gender, password, profilePic } = res.body;
+    const { fullName, email, gender, password, profilePic } = req.body;
 
-    if (!fullName || !email || !gender || !password || !profilePic) {
+    if (!fullName && !email && !gender && !password && !profilePic) {
       return res.status(400).json({ message: "Nothing to Update" });
     }
-    if (password.length < 6) {
-      return res.status(400).json({ message: "Password must be at least 6 characters long" });
-    }
-    if (email.regrex(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
-      return res.status(400).json({ message: "Invalid email address" });
-    }
+
 
     if (fullName) {
       user.fullName = fullName;
     }
+
+
     if (email) {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        return res.status(400).json({ message: "Invalid email address" });
+      }
       user.email = email;
     }
+
+
     if (gender) {
       user.gender = gender;
     }
+
+
     if (password) {
+      if (password.length < 6) {
+        return res.status(400).json({ message: "Password must be at least 6 characters long" });
+      }
       const salt = await bcrypt.genSalt(10);
       const hashedPassword = await bcrypt.hash(password, salt);
       user.password = hashedPassword;
     }
+
     if (profilePic) {
       const uploadResult = await cloudinary.uploader.upload(profilePic);
-      updates.profilePic = uploadResult.secure_url;
-      user.profilePic = profilePic;
+      user.profilePic = uploadResult.secure_url;
+      // user.profilePic = profilePic;
     }
 
+    await user.save();
 
-      res.status(200).json({
-        user: {
-          _id: user._id,
-          fullName: user.fullName,
-          email: user.email,
-          profilePic: user.profilePic,  
-          gender: user.gender
-        },
+    res.status(200).json({
+      user: {
+        _id: user._id,
+        fullName: user.fullName,
+        email: user.email,
+        profilePic: user.profilePic,
+        gender: user.gender
+      },
 
-      });
-    } catch (error) {
-      console.error("Error in Task's List controller:", error);
-      res.status(500).json({ message: "Internal server error" });
+    });
+  } catch (error) {
+    console.error("Error in Task's List controller:", error);
+    res.status(500).json({ message: "Internal server error" });
+  }
+};
+
+export const uploadAvatar = async (req, res) => {
+  try {
+    const user = await User.findById(req.user._id)
+
+    const { profilePic } = res.body;
+
+    if (!profilePic) {
+      return res.status(400).json({ message: "Nothing to Update" });
     }
-  };
 
- export const uploadAvatar = async (req, res) => {
-    try {
-      const user = await User.findById(req.user._id)
+    const uploadResult = await cloudinary.uploader.upload(profilePic);
+    updates.profilePic = uploadResult.secure_url;
+    user.profilePic = profilePic;
 
-      const { profilePic } = res.body;
+    res.status(200).json({
+      user: {
+        _id: user._id,
+        fullName: user.fullName,
+        email: user.email,
+        profilePic: user.profilePic,
+        gender: user.gender
+      },
 
-      if (!profilePic) {
-        return res.status(400).json({ message: "Nothing to Update" });
-      }
-
-      const uploadResult = await cloudinary.uploader.upload(profilePic);
-      updates.profilePic = uploadResult.secure_url;
-      user.profilePic = profilePic;
-
-      res.status(200).json({
-        user: {
-          _id: user._id,
-          fullName: user.fullName,
-          email: user.email,
-          profilePic: user.profilePic,  
-          gender: user.gender
-        },
-
-      });
-    } catch (error) {
-      console.error("Error in Task's List controller:", error);
-      res.status(500).json({ message: "Internal server error" });
-    }
-  };
+    });
+  } catch (error) {
+    console.error("Error in Task's List controller:", error);
+    res.status(500).json({ message: "Internal server error" });
+  }
+};

@@ -57,7 +57,7 @@ const Profile = () => {
 
     } catch (error) {
       console.error("Profile fetch error:", error);
-      // toast.error("Failed to load profile data");
+      toast.error("Failed to load profile data");
     }
   };
 
