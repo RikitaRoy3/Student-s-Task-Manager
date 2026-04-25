@@ -175,9 +175,14 @@ const Profile = () => {
 
             <button className="w-full flex justify-between items-center p-4 hover:bg-gray-50 rounded-xl transition border border-transparent hover:border-gray-200 group">
               <div className="flex items-center space-x-3">
-                <span className="text-blue-600">🔒</span>
+                <span className="text-blue-600">✏️</span>
                 <span className="font-semibold text-gray-700">
-                  Change Password
+                  <Link
+                    to="/editpassword"
+                    className="py-2 px-5 ml-3 bg-white border rounded-xl hover:scale-110 duration-300 border-blue-400  "
+                  >
+                  Edit Password
+                  </Link>
                 </span>
               </div>
               <span className="text-gray-400 group-hover:text-blue-600">
