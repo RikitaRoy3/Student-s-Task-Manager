@@ -212,7 +212,7 @@ export const editProfile = async (req, res) => {
   try {
     const user = await User.findById(req.user._id)
 
-    const { fullName, email, gender, password, profilePic } = req.body;
+    const { fullName, email, gender, profilePic } = req.body;
 
     if (!fullName && !email && !gender && !password && !profilePic) {
       return res.status(400).json({ message: "Nothing to Update" });
@@ -237,15 +237,6 @@ export const editProfile = async (req, res) => {
       user.gender = gender;
     }
 
-
-    if (password) {
-      if (password.length < 6) {
-        return res.status(400).json({ message: "Password must be at least 6 characters long" });
-      }
-      const salt = await bcrypt.genSalt(10);
-      const hashedPassword = await bcrypt.hash(password, salt);
-      user.password = hashedPassword;
-    }
 
     if (profilePic) {
       const uploadResult = await cloudinary.uploader.upload(profilePic);
