@@ -1,5 +1,5 @@
 import express from "express";
-import { signup, login, dashboard, taskList, profile,logout, avatar, editProfile, uploadAvatar } from "../controllers/auth.controller.js";
+import { signup, login, dashboard, taskList, profile,logout, avatar, editProfile, uploadAvatar, changepassword } from "../controllers/auth.controller.js";
 import { checkauth } from "../middleware/auth.middleware.js";
 
 
@@ -15,6 +15,7 @@ router.get("/checkauth", checkauth, (req, res) => {
   res.status(200).json({ user: req.user });
 });
 router.put("/editprofile", checkauth, editProfile);
+router.put("/changepassword", checkauth, changepassword);
 router.post("/logout", checkauth, logout);
 router.post("/uploadavatar", checkauth, uploadAvatar);
 router.get("/dashboard", checkauth, dashboard);
