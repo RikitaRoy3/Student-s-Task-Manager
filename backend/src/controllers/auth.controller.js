@@ -291,3 +291,50 @@ export const uploadAvatar = async (req, res) => {
     res.status(500).json({ message: "Internal server error" });
   }
 };
+
+/* ===================== Change password ===================== */
+
+export const changepassword = async (req, res) => {
+  try {
+    const user = await User.findById(req.user._id)
+
+    const { oldpassword, newpassword, confirmnewpassword } = req.body;
+
+    if (!oldpassword || !newpassword || !confirmnewpassword) {
+      return res.status(400).json({ message: "Please provide all the required fields" });
+    }
+
+    if (newpassword.length < 6) {
+      return res.status(400).json({ message: "Password must be at least 6 characters long" });
+    }
+
+    if (newpassword !== confirmnewpassword) {
+      return res.status(400).json({ message: "Passwords do not match" });
+    }
+
+    const isMatch = await bcrypt.compare(oldpassword, user.password);
+    if (!isMatch) return res.status(400).json({ message: "Invalid password" });
+
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(newpassword, salt);
+
+    user.password = hashedPassword;
+
+    await user.save();
+
+    res.status(200).json({
+      user: {
+        _id: user._id,
+        fullName: user.fullName,
+        email: user.email,
+        profilePic: user.profilePic,
+        gender: user.gender
+      },
+
+    });
+  } catch (error) {
+    console.error("Error in Task's List controller:", error);
+    res.status(500).json({ message: "Internal server error" });
+  }
+};
+
