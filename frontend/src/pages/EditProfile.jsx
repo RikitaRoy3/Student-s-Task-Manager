@@ -10,6 +10,8 @@ const EditProfile = () => {
   let [gender, setGender] = useState("");
 
 
+  
+
   return (
     <div className="max-h-screen">
       <section className="border-red-500 bg-gray-200 min-h-screen flex items-center justify-center">

@@ -117,8 +117,8 @@ const Profile = () => {
   //   name: {fullName},
   //   email: {email},
   // };
-  const [emailAlerts, setEmailAlerts] = useState(true);
-  const [pushNotifs, setPushNotifs] = useState(false);
+  // const [emailAlerts, setEmailAlerts] = useState(true);
+  // const [pushNotifs, setPushNotifs] = useState(false);
 
   return (
     <div className="p-6 bg-gray-50 min-h-screen flex justify-center">
@@ -185,7 +185,7 @@ const Profile = () => {
               </span>
             </button>
           </div>
-          <div className="bg-white p-6 ">
+          {/* <div className="bg-white p-6 ">
             <h3 className="text-gray-500 text-xs font-bold uppercase tracking-widest mb-4">
               Notifications
             </h3>
@@ -216,7 +216,7 @@ const Profile = () => {
                 />
               </label>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
