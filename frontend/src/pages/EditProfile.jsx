@@ -66,7 +66,6 @@ const EditProfile = () => {
           fullName,
           email,
           gender,
-          password,
           profilePic,
         }),
       });
@@ -123,7 +122,7 @@ const EditProfile = () => {
             />
           </div>
 
-          <div>
+          {/* <div>
             <label className="block text-gray-700 mt-3">Password</label>
             <input
               type="password"
@@ -133,7 +132,7 @@ const EditProfile = () => {
               className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none"
               onChange={(e) => setPassword(e.target.value)}
             />
-          </div>
+          </div> */}
 
           <div>
             <label className="block text-gray-700 mt-3">Gender</label>
