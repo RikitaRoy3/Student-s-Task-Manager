@@ -8,29 +8,28 @@ function EditPassword() {
   let [confirmnewpassword, setConfirmNewPassword] = useState("");
 
   /* ===================== connecting Backend's SIGNUP ===================== */
-  let pressedRegister = async (event) => {
+  let submitPassword = async (event) => {
     event.preventDefault();
-    console.log("fullName:", fullName);
-    console.log("email:", email);
-    console.log("password:", password);
-    console.log("gender:", gender);
+    console.log("oldpassword:", oldpassword);
+    console.log("newpassword:", newpassword);
+    console.log("confirmnewpassword:", confirmnewpassword);
 
-    const res = await fetch("http://localhost:3000/api/auth/signup", {
+    const res = await fetch("http://localhost:3000/api/auth/changepassword", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       credentials: "include",
-      body: JSON.stringify({ fullName, email, password, gender }),
+      body: JSON.stringify({ oldpassword, newpassword, confirmnewpassword }),
     });
 
     const data = await res.json();
 
     if(!res.ok) {
-      console.log("Signup error:", data.message);
+      console.log("Password Change error:", data.message);
     }
     else{
-      toast.success("Signup Successful");
+      toast.success("Password Changed Successfully");
     }
   };
 
@@ -97,7 +96,7 @@ function EditPassword() {
                 type="submit"
                 className="w-full block bg-blue-500 hover:bg-blue-400 focus:bg-blue-400 text-white font-semibold rounded-lg
                       px-4 py-3 mt-6"
-                onClick={pressedRegister}
+                onClick={submitPassword}
               >
                 Change Password
               </button>
