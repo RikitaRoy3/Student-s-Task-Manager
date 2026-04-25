@@ -14,7 +14,7 @@ const EditProfile = () => {
     <div className="max-h-screen">
       <section className="border-red-500 bg-gray-200 min-h-screen flex items-center justify-center">
         <div className="bg-gray-100 p-5 rounded-2xl shadow-lg w-full max-w-md">
-          <div className="md:w-1/2 px-5">
+          <div className="w-full px-5">
             <h2 className="text-2xl font-bold text-[#002D74]">Edit Profile</h2>
             <p className="text-sm mt-4 text-[#002D74]">
               If you have an account, please login
@@ -86,14 +86,14 @@ const EditProfile = () => {
               <hr className="border-gray-500" />
             </div>
           </div>
-
+{/* 
           <div className="w-1/2 md:block hidden ">
-            {/* <img
+            <img
               src="https://thumbs.dreamstime.com/b/female-student-character-learning-multitasking-switching-different-activities-vector-illustration-young-woman-solving-262606091.jpg"
               className="rounded-2xl h-full"
               alt="page img"
-            /> */}
-          </div>
+            />
+          </div> */}
         </div>
       </section>
     </div>
