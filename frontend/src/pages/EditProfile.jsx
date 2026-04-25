@@ -1,6 +1,15 @@
 import React from 'react'
+import { Link } from "react-router";
+import { toast } from "react-toastify";
 
 const EditProfile = () => {
+
+  let [fullName, setFullName] = useState("");
+  let [email, setEmail] = useState("");
+  let [password, setPassword] = useState("");
+  let [gender, setGender] = useState("");
+
+
   return (
     <div className="max-h-screen">
       <section className="border-red-500 bg-gray-200 min-h-screen flex items-center justify-center">
@@ -65,9 +74,9 @@ const EditProfile = () => {
                 type="submit"
                 className="w-full block bg-blue-500 hover:bg-blue-400 focus:bg-blue-400 text-white font-semibold rounded-lg
                       px-4 py-3 mt-6"
-                onClick={pressedRegister}
+                // onClick={pressedRegister}
               >
-                Signup
+                Save Changes
               </button>
             </form>
 
@@ -75,16 +84,6 @@ const EditProfile = () => {
               <hr className="border-gray-500" />
               <p className="text-center text-sm">OR</p>
               <hr className="border-gray-500" />
-            </div>
-
-            <div className="text-sm flex justify-between items-center mt-3">
-              <p>If you have an account...</p>
-              <Link
-                to="/login"
-                className="py-2 px-5 ml-3 bg-white border rounded-xl hover:scale-110 duration-300 border-blue-400  "
-              >
-                Login
-              </Link>
             </div>
           </div>
 
