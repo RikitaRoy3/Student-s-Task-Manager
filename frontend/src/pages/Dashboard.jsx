@@ -255,13 +255,13 @@ const fetchDashboard = async () => {
         </div>
 
         <div className="bg-yellow-500 text-white p-6 rounded-xl shadow-md">
-          <p className="text-2xl font-bold">Completed</p>
-          <p className="text-4xl font-bold">{completedCount}</p>
+          <p className="text-2xl font-bold">Pending</p>
+          <p className="text-4xl font-bold">{pendingCount}</p>
         </div>
 
         <div className="bg-green-600 text-white p-6 rounded-xl shadow-md">
-          <p className="text-2xl font-bold">Pending</p>
-          <p className="text-4xl font-bold">{pendingCount}</p>
+          <p className="text-2xl font-bold">Completed</p>
+          <p className="text-4xl font-bold">{completedCount}</p>
         </div>
 
       </div>
