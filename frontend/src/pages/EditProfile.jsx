@@ -38,7 +38,7 @@ const EditProfile = () => {
 
       setFullName(data.user.fullName || "");
       setEmail(data.user.email || "");
-      setPassword(""); // never prefill password
+      // setPassword(data.user.password || ""); // never prefill password
       setGender(data.user.gender || "");
       setProfilePic(data.user.profilePic || "");
 
@@ -105,7 +105,7 @@ const EditProfile = () => {
               type="text"
               id="fullName"
               value={fullName}
-              placeholder="Enter Full Name"
+              placeholder="Enter New Name"
               className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none"
               onChange={(e) => setFullName(e.target.value)}
             />
@@ -117,7 +117,7 @@ const EditProfile = () => {
               type="email"
               id="email"
               value={email}
-              placeholder="Enter Email"
+              placeholder="Enter New Email"
               className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none"
               onChange={(e) => setEmail(e.target.value)}
             />
@@ -128,8 +128,8 @@ const EditProfile = () => {
             <input
               type="password"
               id="password"
-              value={password}
-              placeholder="Enter Password"
+              // value={password}
+              placeholder="Enter New Password"
               className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none"
               onChange={(e) => setPassword(e.target.value)}
             />
@@ -143,7 +143,7 @@ const EditProfile = () => {
               value={gender}
               onChange={(e) => setGender(e.target.value)}
             >
-              <option value="">Select Gender</option>
+              <option value="">Select New Gender</option>
               <option value="Male">Male</option>
               <option value="Female">Female</option>
               <option value="Other">Other</option>

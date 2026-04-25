@@ -171,14 +171,14 @@ export const profile = async (req, res) => {
     const user = await User.findById(req.user._id)
       .populate("pendingTasks")
       .populate("completedTasks");
+
     res.status(200).json({
       user: {
         _id: user._id,
         fullName: user.fullName,
         email: user.email,
         profilePic: user.profilePic,
-        gender: user.gender,
-        password: user.password
+        gender: user.gender
       },
     });
   } catch (error) {
