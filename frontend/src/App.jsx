@@ -43,6 +43,7 @@ import Login from "./auth/Login.jsx";
 import Signup from "./auth/Signup.jsx";
 import Taskslist from "./pages/Taskslist.jsx";
 import EditProfile from "./pages/EditProfile.jsx";
+import EditPassword from "./pages/EditPassword.jsx";
 import Home from "./Component/Home.jsx";
 import ProtectedRoute from "./Component/ProtectedRoute.jsx";
 
@@ -57,6 +58,7 @@ function App() {
         <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>}></Route>
         <Route path="/tasks-list" element={<ProtectedRoute><Taskslist /></ProtectedRoute>}></Route>
         <Route path="/editprofile" element={<EditProfile />}></Route>
+        <Route path="/editpassword" element={<EditPassword />}></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/Signup" element={<Signup />}></Route>
         <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>}></Route>

@@ -10,15 +10,16 @@ dotenv.config();
 /* ===================== NEW TASK ===================== */
 export const new_task = async (req, res) => {
   try {
+
     const { TaskTitle, Description, Priority, DueDate } = req.body;
 
     if (!TaskTitle || !Description || !Priority || !DueDate) {
       return res.status(400).json({ message: "Please provide all the required fields" });
     }
 
-    const task=await Task.findOne({ TaskTitle, user: req.user._id });
+    const task = await Task.findOne({ TaskTitle, user: req.user._id });
 
-    if(task){
+    if (task) {
       return res.status(400).json({ message: "Task with the same title already exists" });
     }
 
@@ -61,18 +62,18 @@ export const new_task = async (req, res) => {
 
 export const pending_to_completed = async (req, res) => {
   try {
+
     const { Task_Id } = req.body;
 
     const task = await Task.findById(Task_Id);
-    
+
     if (!task) {
       return res.status(400).json({ message: "Task not found" });
     }
 
     req.user.completedTasks.push(task._id);
-    await task.save();
-
     req.user.pendingTasks.pull(task._id);
+
     await req.user.save();
 
     res.status(201).json({
@@ -95,7 +96,7 @@ export const pending_to_completed = async (req, res) => {
 
 
 
-
+/* ===================== COMPLETED TASK to PENDING TASK ===================== */
 
 
 export const completed_to_pending = async (req, res) => {
@@ -103,15 +104,15 @@ export const completed_to_pending = async (req, res) => {
     const { Task_Id } = req.body;
 
     const task = await Task.findById(Task_Id);
-    
+
     if (!task) {
       return res.status(400).json({ message: "Task not found" });
     }
 
     req.user.pendingTasks.push(task._id);
-    await task.save();
-
     req.user.completedTasks.pull(task._id);
+
+
     await req.user.save();
 
     res.status(201).json({
