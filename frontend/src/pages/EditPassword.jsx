@@ -99,23 +99,23 @@ function EditPassword() {
                       px-4 py-3 mt-6"
                 onClick={pressedRegister}
               >
-                Signup
+                Change Password
               </button>
             </form>
 
             <div className="mt-7 grid grid-cols-3 items-center text-gray-500">
               <hr className="border-gray-500" />
-              <p className="text-center text-sm">OR</p>
+              <p className="text-center text-sm">BACK</p>
               <hr className="border-gray-500" />
             </div>
 
             <div className="text-sm flex justify-between items-center mt-3">
-              <p>If you have an account...</p>
+              <p>Visit the Profile page...</p>
               <Link
-                to="/login"
+                to="/profile"
                 className="py-2 px-5 ml-3 bg-white border rounded-xl hover:scale-110 duration-300 border-blue-400  "
               >
-                Login
+                Profile
               </Link>
             </div>
           </div>
