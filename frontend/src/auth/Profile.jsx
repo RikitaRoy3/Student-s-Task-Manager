@@ -175,7 +175,7 @@ const Profile = () => {
 
             <button className="w-full flex justify-between items-center p-4 hover:bg-gray-50 rounded-xl transition border border-transparent hover:border-gray-200 group">
               <div className="flex items-center space-x-3">
-                <span className="text-blue-600">✏️</span>
+                <span className="text-blue-600">🔐</span>
                 <span className="font-semibold text-gray-700">
                   <Link
                     to="/editpassword"
