@@ -15,7 +15,7 @@ function EditPassword() {
     console.log("confirmnewpassword:", confirmnewpassword);
 
     const res = await fetch("http://localhost:3000/api/auth/changepassword", {
-      method: "POST",
+      method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
@@ -24,6 +24,7 @@ function EditPassword() {
     });
 
     const data = await res.json();
+
 
     if(!res.ok) {
       console.log("Password Change error:", data.message);
