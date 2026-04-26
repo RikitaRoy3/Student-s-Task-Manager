@@ -96,6 +96,41 @@ const Taskslist = () => {
 
   };
 
+  /* ===================== function connecting Backend's Delete Task ===================== */
+
+  let pressed_delete = async (id) => {
+    // event.preventDefault();
+    const res = await fetch("http://localhost:3000/api/task/delete_task", {
+      method: "PUT",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        Task_Id: id
+      }),
+    });
+
+    const data1 = await res.json();
+
+    if (res.ok) {
+      // toast.success("Task Deleting Successful !!");
+      pressedRegister();
+    }
+    else {
+      console.log("Task Deleting error:", data1.message);
+    }
+
+    console.log("id:", data1.task._id);
+    console.log("Message:", data1.task.message);
+    console.log("TaskTitle:", data1.task.TaskTitle);
+    console.log("Description:", data1.task.Description);
+    console.log("Priority:", data1.task.Priority);
+    console.log("DueDate:", data1.task.DueDate);
+    console.log("User_Id:", data1.task.User_Id);
+
+  };
+
 
   /* ===================== function connecting Backend's Tasklist ===================== */
 
@@ -175,8 +210,8 @@ const Taskslist = () => {
               </td>
               <td className="p-4">
                 <div className="flex space-x-2">
-                  <button className="text-blue-600 hover:text-blue-800 font-medium text-sm p-1 rounded hover:bg-blue-50 transition">
-                    Edit
+                  <button onClick={(event) => { event.target.disabled = true; pressed_delete(task._id) }} className="text-red-600 hover:text-blue-800 font-medium text-sm p-1 rounded hover:bg-blue-50 transition">
+                    Delete
                   </button>
                   <button onClick={(event) => { event.target.disabled = true; pressedcomplete(task._id) }} className="text-green-600 hover:text-green-800 font-medium text-sm p-1 rounded hover:bg-green-50 transition">
                     Complete
