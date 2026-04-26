@@ -216,7 +216,7 @@ const fetchDashboard = async () => {
 
 
     if(!res.ok){
-      console.log("Dashboard error:", data.message);
+      return;
       
     }
     
