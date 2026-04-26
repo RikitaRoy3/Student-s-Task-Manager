@@ -132,3 +132,38 @@ export const completed_to_pending = async (req, res) => {
     res.status(500).json({ message: "Internal server error" });
   }
 }
+
+/* ===================== Delete Task ===================== */
+
+export const delete_task = async (req, res) => {
+  try {
+    const { Task_Id } = req.body;
+
+    const task = await Task.findById(Task_Id);
+
+    if (!task) {
+      return res.status(400).json({ message: "Task not found" });
+    }
+
+    req.user.pendingTasks.pull(task._id);
+    req.user.completedTasks.pull(task._id);
+
+    await req.user.save();
+
+    res.status(201).json({
+      task: {
+        message: "Task deleted successfully",
+        Task_Id: task._id,
+        TaskTitle: task.TaskTitle,
+        Description: task.Description,
+        Priority: task.Priority,
+        DueDate: task.DueDate,
+        User_Id: task.user
+      },
+    });
+  }
+  catch (error) {
+    console.error("Error in delete_task controller:", error);
+    res.status(500).json({ message: "Internal server error" });
+  }
+};
