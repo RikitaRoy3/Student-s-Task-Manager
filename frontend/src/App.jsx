@@ -41,7 +41,7 @@ import Add from "./pages/Add.jsx";
 import Profile from "./auth/Profile.jsx";
 import Login from "./auth/Login.jsx";
 import Signup from "./auth/Signup.jsx";
-import Taskslist from "./pages/Taskslist.jsx";
+import TasksList from "./pages/TasksList.jsx";
 import EditProfile from "./pages/EditProfile.jsx";
 import EditPassword from "./pages/EditPassword.jsx";
 import Home from "./Component/Home.jsx";
@@ -56,7 +56,7 @@ function App() {
       <Routes>
         <Route path="/" element={<ProtectedRoute><Home /></ProtectedRoute>}></Route>
         <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>}></Route>
-        <Route path="/taskslist" element={<ProtectedRoute><Taskslist /></ProtectedRoute>}></Route>
+        <Route path="/taskslist" element={<ProtectedRoute><TasksList /></ProtectedRoute>}></Route>
         <Route path="/editprofile" element={<EditProfile />}></Route>
         <Route path="/editpassword" element={<EditPassword />}></Route>
         <Route path="/login" element={<Login />}></Route>
