@@ -196,6 +196,7 @@ export const avatar = async (req, res) => {
 
     res.status(200).json({
       user: {
+        profilePic: user.profilePic,
         gender: user.gender
       },
 
@@ -337,4 +338,3 @@ export const changepassword = async (req, res) => {
     res.status(500).json({ message: "Internal server error" });
   }
 };
-
