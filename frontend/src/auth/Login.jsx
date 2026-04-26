@@ -4,6 +4,10 @@ import Signup from './Signup.jsx';
 import { toast } from 'react-toastify';
 
 function Login() {
+
+ const API = import.meta.env.VITE_API_URL;
+
+
  let [email,setEmail] = useState("")
  let [password,setPassword] = useState("")
 
@@ -11,7 +15,7 @@ function Login() {
   event.preventDefault();
   console.log("email:",email);
   console.log("password:",password);
-  const res = await fetch("http://localhost:3000/api/auth/login", {
+  const res = await fetch("${API}/api/auth/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

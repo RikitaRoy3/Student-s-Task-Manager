@@ -20,6 +20,7 @@ import female_face from "../assets/female_face.jpeg";
 
 const Profile = () => {
 
+  const API = import.meta.env.VITE_API_URL;
 
 
   const [fullName, setFullName] = useState("");
@@ -36,7 +37,7 @@ const Profile = () => {
   /* ===================== connecting Backend's Profile details fetching controller ===================== */
   const fetchprofile = async () => {
     try {
-      const res = await fetch("http://localhost:3000/api/auth/profile", {
+      const res = await fetch("${API}/api/auth/profile", {
         method: "GET",
         credentials: "include",
       });
@@ -64,7 +65,7 @@ const Profile = () => {
   /* ===================== connecting Backend's Logout controller ===================== */
   const function_to_logout = async () => {
     try {
-      const res = await fetch("http://localhost:3000/api/auth/logout", {
+      const res = await fetch("${API}/api/auth/logout", {
         method: "POST",
         credentials: "include",
       });
@@ -88,7 +89,7 @@ const Profile = () => {
 
   const avatar = async () => {
     try {
-      const res = await fetch("http://localhost:3000/api/auth/avatar", {
+      const res = await fetch("${API}/api/auth/avatar", {
         method: "GET",
         credentials: "include",
       });
@@ -130,7 +131,7 @@ const Profile = () => {
         <div className="p-8">
           <div className="flex items-center space-x-6 mb-8 pb-8 border-b border-gray-100">
             <img
-              src={profilePic||(gender === "Male" ? male_face : female_face)}
+              src={profilePic || (gender === "Male" ? male_face : female_face)}
               alt="Profile"
               className="w-20 h-20 rounded-full border-4 border-blue-50 object-cover"
             />
@@ -164,7 +165,7 @@ const Profile = () => {
                     to="/editprofile"
                     className="py-2 px-5 ml-3 bg-white border rounded-xl hover:scale-110 duration-300 border-blue-400  "
                   >
-                  Edit Profile
+                    Edit Profile
                   </Link>
                 </span>
               </div>
@@ -181,7 +182,7 @@ const Profile = () => {
                     to="/editpassword"
                     className="py-2 px-5 ml-3 bg-white border rounded-xl hover:scale-110 duration-300 border-blue-400  "
                   >
-                  Edit Password
+                    Edit Password
                   </Link>
                 </span>
               </div>

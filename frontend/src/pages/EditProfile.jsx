@@ -171,6 +171,11 @@ import React, { useState, useEffect, useRef } from "react";
 import { toast } from "react-toastify";
 
 const EditProfile = () => {
+
+
+  const API = import.meta.env.VITE_API_URL;
+
+
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [gender, setGender] = useState("");
@@ -186,7 +191,7 @@ const EditProfile = () => {
 
   const fetchprofile = async () => {
     try {
-      const res = await fetch("http://localhost:3000/api/auth/profile", {
+      const res = await fetch("${API}/api/auth/profile", {
         method: "GET",
         credentials: "include",
       });
@@ -223,7 +228,7 @@ const EditProfile = () => {
     e.preventDefault();
 
     try {
-      const res = await fetch("http://localhost:3000/api/auth/editprofile", {
+      const res = await fetch("${API}/api/auth/editprofile", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

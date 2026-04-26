@@ -185,6 +185,10 @@ import { toast } from "react-toastify";
 
 function Dashboard() {
 
+  const API = import.meta.env.VITE_API_URL;
+
+
+
   /* ===================== STATE ===================== */
 
   const [fullName, setFullName] = useState("");
@@ -203,7 +207,7 @@ function Dashboard() {
 
 const fetchDashboard = async () => {
   try {
-    const res = await fetch("http://localhost:3000/api/auth/dashboard", {
+    const res = await fetch("${API}/api/auth/dashboard", {
       method: "GET",
       credentials: "include",
     });

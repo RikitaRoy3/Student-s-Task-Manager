@@ -5,6 +5,9 @@ import { toast } from "react-toastify";
 
 function Add() {
 
+  const API = import.meta.env.VITE_API_URL;
+
+
   let [TaskTitle, setTaskTitle] = useState("");
   let [Description, setDescription] = useState("");
   let [Priority, setPriority] = useState("");
@@ -19,7 +22,7 @@ function Add() {
     console.log("Priority:", Priority);
     console.log("DueDate:", DueDate);
 
-    const res = await fetch("http://localhost:3000/api/task/new_task", {
+    const res = await fetch("${API}/api/task/new_task", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -3,6 +3,11 @@ import { Link } from "react-router";
 import { toast } from "react-toastify";
 
 function Signup() {
+
+
+  const API = import.meta.env.VITE_API_URL;
+
+
   let [fullName, setFullName] = useState("");
   let [email, setEmail] = useState("");
   let [password, setPassword] = useState("");
@@ -17,7 +22,7 @@ function Signup() {
     console.log("password:", password);
     console.log("gender:", gender);
 
-    const res = await fetch("http://localhost:3000/api/auth/signup", {
+    const res = await fetch("${API}/api/auth/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

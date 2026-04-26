@@ -3,6 +3,10 @@ import { Link } from "react-router";
 import { toast } from "react-toastify";
 
 function EditPassword() {
+
+  const API = import.meta.env.VITE_API_URL;
+
+
   let [oldpassword, setoldPassword] = useState("");
   let [newpassword, setNewPassword] = useState("");
   let [confirmnewpassword, setConfirmNewPassword] = useState("");
@@ -14,7 +18,7 @@ function EditPassword() {
     console.log("newpassword:", newpassword);
     console.log("confirmnewpassword:", confirmnewpassword);
 
-    const res = await fetch("http://localhost:3000/api/auth/changepassword", {
+    const res = await fetch("${API}/api/auth/changepassword", {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

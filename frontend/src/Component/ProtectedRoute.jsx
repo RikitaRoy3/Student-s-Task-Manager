@@ -3,6 +3,11 @@ import { Navigate } from "react-router";
 
 function ProtectedRoute({ children }) {
 
+
+  const API = import.meta.env.VITE_API_URL;
+
+
+
   const [isAuth, setIsAuth] = useState(null);
 
   useEffect(() => {
@@ -11,7 +16,7 @@ function ProtectedRoute({ children }) {
 
   const authCheck = async () => {
     try {
-      const res = await fetch("http://localhost:3000/api/auth/checkauth", {
+      const res = await fetch("${API}/api/auth/checkauth", {
         method: "GET",
         credentials: "include",
       });

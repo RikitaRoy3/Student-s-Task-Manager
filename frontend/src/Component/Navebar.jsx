@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import logo from "../assets/logo.jpg";
 import { toast } from "react-toastify";
-import { Link,useLocation } from "react-router";
+import { Link, useLocation } from "react-router";
 import male_face from "../assets/male_face.png"
 import female_face from "../assets/female_face.jpeg"
 
@@ -10,7 +10,12 @@ import female_face from "../assets/female_face.jpeg"
 
 
 function Navbar() {
-const location = useLocation();
+
+  const API = import.meta.env.VITE_API_URL;
+
+
+
+  const location = useLocation();
 
   const [gender, setGender] = useState("");
   const [profilePic, setProfilePic] = useState("");
@@ -23,7 +28,7 @@ const location = useLocation();
 
   const avatar = async () => {
     try {
-      const res = await fetch("http://localhost:3000/api/auth/avatar", {
+      const res = await fetch("${API}/api/auth/avatar", {
         method: "GET",
         credentials: "include",
       });
@@ -89,7 +94,7 @@ const location = useLocation();
               </Link>
             </div>
             <div>
-              <Link to="/profile"><img src={profilePic||(gender === "Male" ? male_face : female_face)} className="mr-3 h-15 rounded-full sm:h-9" alt="profile" /></Link>
+              <Link to="/profile"><img src={profilePic || (gender === "Male" ? male_face : female_face)} className="mr-3 h-15 rounded-full sm:h-9" alt="profile" /></Link>
             </div>
           </div>
         </div>
