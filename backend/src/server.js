@@ -21,7 +21,7 @@ const server = http.createServer(app);
 
 app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ extended: true, limit: "10mb" }));// This will prevent PayloadTooLargeError(This means request of size upto 10mb can come from the frontend)
-app.use(cors({origin: true, credentials: true}));// This will allow frontend to send cookies to our backend
+// app.use(cors({origin: true, credentials: true}));// This will allow frontend to send cookies to our backend
 
 app.use(cors({origin: ENV.CLIENT_URL, credentials: true}));// This will allow frontend to send cookies to our backend
 
