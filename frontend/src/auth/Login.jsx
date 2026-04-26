@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router'
-import Signup from './Signup';
+import Signup from './Signup.jsx';
 import { toast } from 'react-toastify';
 
 function Login() {
