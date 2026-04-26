@@ -303,7 +303,7 @@ const fetchDashboard = async () => {
             </h2>
 
             <Link
-              to="/tasks-list"
+              to="/taskslist"
               className="text-blue-500 text-sm hover:underline"
             >
               View All
@@ -321,7 +321,7 @@ const fetchDashboard = async () => {
             </Link>
 
             <Link
-              to="/tasks-list"
+              to="/taskslist"
               className="w-full bg-blue-700 rounded p-3 flex items-center space-x-3 hover:bg-blue-900 transition shadow-sm text-white font-medium"
             >
               <span className="text-xl">📋</span>
