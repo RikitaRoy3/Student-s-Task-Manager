@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { toast } from "react-toastify";
 
+
 const EditProfile = () => {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
@@ -38,21 +39,18 @@ const EditProfile = () => {
 
       setFullName(data.user.fullName || "");
       setEmail(data.user.email || "");
-      // setPassword(data.user.password || ""); // never prefill password
       setGender(data.user.gender || "");
       setProfilePic(data.user.profilePic || "");
 
       console.log("Profile data:", data.user);
 
-
-      toast.success("Profile Data Extracted Successfully");
     } catch (error) {
       console.error("Profile fetch error:", error);
       toast.error("Failed to load profile data");
     }
   };
 
-  const fetcheditprofile = async (e) => {
+  const fetch_editprofile = async (e) => {
     e.preventDefault();
 
     try {
@@ -76,15 +74,17 @@ const EditProfile = () => {
         toast.error(data.message || "Update failed");
         return;
       }
-
       fetchprofile();
 
-      toast.success("Profile Updated Successfully");
+      toast.success("Profile updated successfully");
+      window.location.reload();
+
     } catch (error) {
       console.error("Edit profile error:", error);
       toast.error("Failed to update profile");
     }
   };
+
 
   return (
     <div className="min-h-screen bg-gray-200 flex items-center justify-center">
@@ -97,7 +97,7 @@ const EditProfile = () => {
           Edit details and click save
         </p>
 
-        <form className="mt-6" onSubmit={fetcheditprofile}>
+        <form className="mt-6" onSubmit={fetch_editprofile}>
           <div>
             <label className="block text-gray-700">Full Name</label>
             <input

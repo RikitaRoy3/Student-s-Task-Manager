@@ -238,6 +238,8 @@ const fetchDashboard = async () => {
 
   /* ===================== UI ===================== */
 
+  let a = 1;
+
   return (
     <div className="p-8 min-h-screen">
 
@@ -268,7 +270,7 @@ const fetchDashboard = async () => {
 
       {/* ===== LOWER SECTION ===== */}
 
-      <div className="shadow-md grid grid-cols-1 lg:grid-cols-2 gap-8 rounded-2xl">
+      <div className="shadow-md grid grid-cols-1 lg:grid-cols-2 gap-8 rounded-3xl">
 
         {/* Upcoming Tasks */}
 
@@ -277,10 +279,16 @@ const fetchDashboard = async () => {
             Upcoming Tasks
           </h2>
 
-          <div className="space-y-3 text-gray-500">
+          <div className="space-y-0.5 text-black-500">
             {pendingTasks.length === 0 && (
               <p>No upcoming tasks</p>
             )}
+          
+            {pendingTasks.map((task) => (
+              <div key={task._id}>
+                <pre>{a++}. {task.TaskTitle}</pre>
+              </div>
+            ))}
           </div>
 
         </div>
