@@ -130,7 +130,7 @@ const Profile = () => {
         <div className="p-8">
           <div className="flex items-center space-x-6 mb-8 pb-8 border-b border-gray-100">
             <img
-              src={gender === "Male" ? male_face : female_face}
+              src={profilePic||(gender === "Male" ? male_face : female_face)}
               alt="Profile"
               className="w-20 h-20 rounded-full border-4 border-blue-50 object-cover"
             />

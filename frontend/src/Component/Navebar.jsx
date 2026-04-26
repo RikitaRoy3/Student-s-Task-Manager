@@ -13,6 +13,7 @@ function Navbar() {
 const location = useLocation();
 
   const [gender, setGender] = useState("");
+  const [profilePic, setProfilePic] = useState("");
 
   useEffect(() => {
     avatar();
@@ -30,6 +31,7 @@ const location = useLocation();
       const data2 = await res.json();
 
       setGender(data2.user.gender);
+      setProfilePic(data2.user.profilePic);
       console.log("Avatar data:", data2.user.gender);
 
       if (!res.ok) {
@@ -87,7 +89,7 @@ const location = useLocation();
               </Link>
             </div>
             <div>
-              <Link to="/profile"><img src={gender === "Male" ? male_face : female_face} className="mr-3 h-15 rounded-full sm:h-9" alt="profile" /></Link>
+              <Link to="/profile"><img src={profilePic||(gender === "Male" ? male_face : female_face)} className="mr-3 h-15 rounded-full sm:h-9" alt="profile" /></Link>
             </div>
           </div>
         </div>
