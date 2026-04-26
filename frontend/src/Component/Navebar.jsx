@@ -28,7 +28,7 @@ function Navbar() {
 
   const avatar = async () => {
     try {
-      const res = await fetch("${API}/api/auth/avatar", {
+      const res = await fetch(`${API}/api/auth/avatar`, {
         method: "GET",
         credentials: "include",
       });

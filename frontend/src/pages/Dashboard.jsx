@@ -207,7 +207,7 @@ function Dashboard() {
 
 const fetchDashboard = async () => {
   try {
-    const res = await fetch("${API}/api/auth/dashboard", {
+    const res = await fetch(`${API}/api/auth/dashboard`, {
       method: "GET",
       credentials: "include",
     });

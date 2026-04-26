@@ -37,7 +37,7 @@ const Profile = () => {
   /* ===================== connecting Backend's Profile details fetching controller ===================== */
   const fetchprofile = async () => {
     try {
-      const res = await fetch("${API}/api/auth/profile", {
+      const res = await fetch(`${API}/api/auth/profile`, {
         method: "GET",
         credentials: "include",
       });
@@ -65,7 +65,7 @@ const Profile = () => {
   /* ===================== connecting Backend's Logout controller ===================== */
   const function_to_logout = async () => {
     try {
-      const res = await fetch("${API}/api/auth/logout", {
+      const res = await fetch(`${API}/api/auth/logout`, {
         method: "POST",
         credentials: "include",
       });
@@ -89,7 +89,7 @@ const Profile = () => {
 
   const avatar = async () => {
     try {
-      const res = await fetch("${API}/api/auth/avatar", {
+      const res = await fetch(`${API}/api/auth/avatar`, {
         method: "GET",
         credentials: "include",
       });

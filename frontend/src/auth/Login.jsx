@@ -15,7 +15,7 @@ function Login() {
   event.preventDefault();
   console.log("email:",email);
   console.log("password:",password);
-  const res = await fetch("${API}/api/auth/login", {
+  const res = await fetch(`${API}/api/auth/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

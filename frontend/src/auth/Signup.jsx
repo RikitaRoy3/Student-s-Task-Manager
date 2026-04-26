@@ -22,7 +22,7 @@ function Signup() {
     console.log("password:", password);
     console.log("gender:", gender);
 
-    const res = await fetch("${API}/api/auth/signup", {
+    const res = await fetch(`${API}/api/auth/signup`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

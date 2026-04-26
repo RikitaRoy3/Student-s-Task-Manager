@@ -22,7 +22,7 @@ function Add() {
     console.log("Priority:", Priority);
     console.log("DueDate:", DueDate);
 
-    const res = await fetch("${API}/api/task/new_task", {
+    const res = await fetch(`${API}/api/task/new_task`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

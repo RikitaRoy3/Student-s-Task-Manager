@@ -18,7 +18,7 @@ function EditPassword() {
     console.log("newpassword:", newpassword);
     console.log("confirmnewpassword:", confirmnewpassword);
 
-    const res = await fetch("${API}/api/auth/changepassword", {
+    const res = await fetch(`${API}/api/auth/changepassword`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

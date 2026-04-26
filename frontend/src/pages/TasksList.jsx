@@ -29,7 +29,7 @@ const Taskslist = () => {
 
   let pressedcomplete = async (id) => {
     // event.preventDefault();
-    const res = await fetch("${API}/api/task/pending_to_completed", {
+    const res = await fetch(`${API}/api/task/pending_to_completed`, {
       method: "PUT",
       credentials: "include",
       headers: {
@@ -68,7 +68,7 @@ const Taskslist = () => {
 
   let pressedpending = async (id) => {
     // event.preventDefault();
-    const res = await fetch("${API}/api/task/completed_to_pending", {
+    const res = await fetch(`${API}/api/task/completed_to_pending`, {
       method: "PUT",
       credentials: "include",
       headers: {
@@ -102,7 +102,7 @@ const Taskslist = () => {
 
   let pressed_delete = async (id) => {
     // event.preventDefault();
-    const res = await fetch("${API}/api/task/delete_task", {
+    const res = await fetch(`${API}/api/task/delete_task`, {
       method: "PUT",
       credentials: "include",
       headers: {
@@ -139,7 +139,7 @@ const Taskslist = () => {
   let pressedRegister = async (event) => {
     // event.preventDefault();
 
-    const res = await fetch("${API}/api/auth/tasklist", {
+    const res = await fetch(`${API}/api/auth/tasklist`, {
       method: "GET",
       credentials: "include",
     });

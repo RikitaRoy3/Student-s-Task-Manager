@@ -191,7 +191,7 @@ const EditProfile = () => {
 
   const fetchprofile = async () => {
     try {
-      const res = await fetch("${API}/api/auth/profile", {
+      const res = await fetch(`${API}/api/auth/profile`, {
         method: "GET",
         credentials: "include",
       });
@@ -228,7 +228,7 @@ const EditProfile = () => {
     e.preventDefault();
 
     try {
-      const res = await fetch("${API}/api/auth/editprofile", {
+      const res = await fetch(`${API}/api/auth/editprofile`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
