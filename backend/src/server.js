@@ -9,7 +9,7 @@ import { ENV } from "./lib/env.js";
 // import { app, server } from "./lib/socket.js";
 
 import authRoutes from "./routes/auth.route.js";
-import taskRoutes from "./routes/task.route.js"
+import taskRoutes from "./routes/task.route.js";
 
 dotenv.config();
 
@@ -20,17 +20,13 @@ const app = express();
 const server = http.createServer(app);
 
 
-const allowedOrigins = [
-  "https://taskify-eight-weld.vercel.app",
-  "https://taskify-git-main-rikita-roys-projects.vercel.app"
-];
-
-
 
 app.use(express.json({ limit: "10mb" }));
+
+
 const allowedOrigins = [
-  "https://taskify-eight-weld.vercel.app",
-  "https://taskify-git-main-rikita-roys-projects.vercel.app"
+  "https://ti-flax-eta.vercel.app",
+  "https://ti-git-main-rikita-roys-projects.vercel.app"
 ];
 
 app.use(cors({
