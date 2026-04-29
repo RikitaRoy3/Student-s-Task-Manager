@@ -55,7 +55,7 @@ function App() {
       {/* <Home/> */}
       <Routes>
         <Route path="/" element={<ProtectedRoute><Home /></ProtectedRoute>}></Route>
-        <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>}></Route>
+        <Route path="/dashboard" element={<Dashboard />}></Route>
         <Route path="/taskslist" element={<ProtectedRoute><TasksList /></ProtectedRoute>}></Route>
         <Route path="/editprofile" element={<ProtectedRoute><EditProfile /></ProtectedRoute>}></Route>
         <Route path="/editpassword" element={<ProtectedRoute><EditPassword /></ProtectedRoute>}></Route>
