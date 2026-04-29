@@ -9,7 +9,7 @@ import { ENV } from "./lib/env.js";
 // import { app, server } from "./lib/socket.js";
 
 import authRoutes from "./routes/auth.route.js";
-import taskRoutes from "./routes/task.route.js";
+import taskRoutes from "./routes/task.route.js"
 
 dotenv.config();
 
