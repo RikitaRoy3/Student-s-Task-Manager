@@ -28,7 +28,15 @@ const allowedOrigins = [
 
 
 app.use(express.json({ limit: "10mb" }));
-app.use(express.urlencoded({ extended: true, limit: "10mb" }));// This will prevent PayloadTooLargeError(This means request of size upto 10mb can come from the frontend)
+const allowedOrigins = [
+  "https://taskify-eight-weld.vercel.app",
+  "https://taskify-git-main-rikita-roys-projects.vercel.app"
+];
+
+app.use(cors({
+  origin: allowedOrigins,
+  credentials: true
+}));// This will prevent PayloadTooLargeError(This means request of size upto 10mb can come from the frontend)
 // app.use(cors({origin: true, credentials: true}));// This will allow frontend to send cookies to our backend
 
 app.use(cors({origin: true, credentials: true}));// This will allow frontend to send cookies to our backend
