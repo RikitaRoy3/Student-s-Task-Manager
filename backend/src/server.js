@@ -35,7 +35,7 @@ app.use(cors({
 }));// This will prevent PayloadTooLargeError(This means request of size upto 10mb can come from the frontend)
 // app.use(cors({origin: true, credentials: true}));// This will allow frontend to send cookies to our backend
 
-app.use(cors({origin: true, credentials: true}));// This will allow frontend to send cookies to our backend
+// app.use(cors({origin: true, credentials: true}));// This will allow frontend to send cookies to our backend
 
 app.use(cookieParser());
 
