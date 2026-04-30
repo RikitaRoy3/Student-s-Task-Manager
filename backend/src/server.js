@@ -44,7 +44,6 @@ const PORT=process.env.PORT || 3000;
 app.use("/api/auth", authRoutes);
 app.use("/api/task", taskRoutes);
 
-
 if (ENV.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "../frontend/dist")));
 
